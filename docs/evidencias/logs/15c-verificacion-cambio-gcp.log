@@ -1,0 +1,31 @@
+== 2026-11-24T05:39:33Z Verificación en GCP del cambio aplicado por el pipeline
+^[[36;1msummary=$(grep -E '^(Plan:|No changes)' plan.txt || true)^[[0m
+Apply complete! Resources: 2 added, 9 changed, 0 destroyed.
+^[[36;1m  echo "- URL: $url (HTTP $code en /login/index.php)"^[[0m
+^[[36;1mterraform plan -lock-timeout=5m -no-color -detailed-exitcode && echo "Sin deriva tras el apply"^[[0m
+No changes. Your infrastructure matches the configuration.
+$ gcloud run services describe moodle-sql-web (etiquetas, imagen)
+metadata:
+  labels:
+    app: moodle
+    cloud.googleapis.com/location: us-central1
+    entrega: actividad-6
+    goog-terraform-provisioned: 'true'
+    managed-by: terraform
+spec:
+  template:
+    spec:
+      containers:
+      - image: us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a
+status:
+  latestReadyRevisionName: moodle-sql-web-00002-njh
+$ gcloud sql instances describe moodle-sql-mysql (userLabels)
+app=moodle;entrega=actividad-6;managed-by=terraform
+$ gcloud filestore instances describe moodle-sql-files (labels)
+app=moodle;entrega=actividad-6;goog-terraform-provisioned=true;managed-by=terraform
+$ gcloud run services get-iam-policy moodle-sql-web
+{'members': ['allUsers'], 'role': 'roles/run.invoker'}
+$ gcloud scheduler jobs describe moodle-sql-cron
+*/15 * * * *	ENABLED
+$ curl /login/index.php
+HTTP 200 en 0.576042s
