@@ -6,7 +6,7 @@ name: Aplicación Moodle
 on:
   push:
     branches: [actividad6]
-    paths-ignore: ["infrastructure/**", "docs/**", "**/*.md", ".github/workflows/terraform.yml"]
+    paths-ignore: ["infrastructure/**", "docs/**", "scripts/**", "**/*.md", ".github/workflows/terraform.yml", ".github/workflows/application.yml"]
   workflow_dispatch:
 
 permissions:
