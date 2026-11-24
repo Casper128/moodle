@@ -4,7 +4,7 @@ project_id   = "project-8e56ba89-c5a4-43c4-aa6"
 state_bucket = "project-8e56ba89-c5a4-43c4-aa6-tfstate"
 
 # Imagen inmutable publicada por el pipeline de aplicación (etiqueta = commit SHA).
-container_image = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a"
+container_image = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:c8aa208fe713f76b10774c35612690971fc20411"
 
 site_ready = true
 
