@@ -1,0 +1,15 @@
+$ gcloud run jobs executions list --job moodle-sql-cron
+EXECUTION: moodle-sql-cron-qnmcf
+INICIO: 06:00:06
+FIN: 06:03:59
+OK: 1
+
+EXECUTION: moodle-sql-cron-2rv4p
+INICIO: 05:45:05
+FIN: 05:49:02
+OK: 1
+
+$ gcloud logging read (cron de Moodle)
+06:03:55	Cron completed at 06:03:55 in 0.309968 seconds. Memory used: 44.6 MB.
+06:03:55	Cron run completed correctly
+06:03:54	Cron completed at 06:03:54 in 0.331373 seconds. Memory used: 44.6 MB. Continuing to check for tasks for 1 more 

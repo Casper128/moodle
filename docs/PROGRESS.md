@@ -1,39 +1,44 @@
 # Seguimiento — Actividad 6 (IaC · CI/CD · Observabilidad, opción B)
 
-Entrega: 27-nov-2026. Proyecto GCP: `project-8e56ba89-c5a4-43c4-aa6` · región `us-central1`.
+Entrega: 27-nov-2026. Proyecto GCP `project-8e56ba89-c5a4-43c4-aa6` · región `us-central1`.
+Moodle: https://moodle-sql-web-264423911779.us-central1.run.app · Fork: https://github.com/Casper128/moodle
+
+## Estado por fase (verificado el 24-nov-2026)
+
+| Fase | Estado | Evidencia |
+|---|---|---|
+| 1. Auditoría | Hecha | Tabla inferior · `logs/02-limpieza-recursos.log` |
+| 2. Fork | Hecho: `Casper128/moodle`, rama `actividad6` (por defecto, protegida) | 01–03 |
+| 3. Arquitectura | Cloud Run + Cloud SQL + Filestore (elegida por el responsable) | `docs/arquitectura/` |
+| 4. Contenerización | Verificada en local y en Cloud Run | 04, 05* |
+| 5. Artifact Registry | Imágenes `ad14cb81…` y `c8aa208f…` con digest | 10, 11 |
+| 6. Terraform | Estado en GCS; 67 elementos; plan final sin cambios | 06–09, 27 |
+| 7. Cloud SQL | MySQL 8.4 conectada; persistencia probada | 12, 21b, 21d |
+| 8. CI/CD IaC | PR #1 → plan → aprobación → apply → cambio visible en GCP | 13–15c |
+| 9. CI/CD aplicación | PR #2 → imagen → PR #3 → apply aprobado → revisión 00003 | 16–16c |
+| 10. Despliegue | URL pública, login, curso, archivo y cron verificados | 17–21d |
+| 11. Observabilidad | Logs, métricas, uptime, 3 alertas, dashboard; incidente real | 22–26 |
+| 12. Diseño visual | Color institucional en el tema Boost, sin tocar el núcleo | 20b |
+| 13. Evidencias | 40 capturas reales e índice | `evidencias/INDICE.md` |
+| 14. Informe | Word y PDF (46 páginas) | `entregable/` |
+| 15. Presentación y guion | 12 diapositivas y guion con preguntas | `entregable/` |
+
+## Pendientes reales
+
+- Capturas de la consola de GCP (requieren la sesión del usuario): lista y rutas en `evidencias/INDICE.md`. Después, regenerar el informe con `scripts/docs/`.
+- Completar en la portada del informe y en la presentación: institución, asignatura, docente e integrantes.
+- Coste: Filestore ≈ US$5,4/día. Tras la evaluación, desactivar `deletion_protection_enabled` mediante un PR y retirar los recursos de forma controlada.
 
 ## Auditoría inicial (23-nov-2026)
 
 | Elemento | Hallazgo | Acción |
 |---|---|---|
-| Repositorio | Carpeta sin Git; `gh` no instalado | Se instaló `gh`; clon de `moodle/moodle` `MOODLE_502_STABLE` (5.2.5+) en `version-b/moodle-gcp` |
-| Terraform | Estado local de `version-b/relacional` (3-nov) desactualizado: Cloud Run, jobs y Filestore ya no existían | Estado migrado a GCS; los recursos inexistentes se recrearán |
-| Cloud SQL `moodle-sql-mysql` | MySQL 8.4, db-f1-micro, detenida | Encendida (autorizado). Se reutiliza; base nueva `moodle`, `moodledb` se conserva fuera del estado |
-| Redis `moodle-sql-sessions` | Activo, fuera de Terraform, ≈ US$1,2/día | Eliminado (autorizado) |
-| VM `moodle-sql-demo` + disco 20 GB | Detenida; demo del 5-nov | Pendiente de confirmar eliminación |
-| Infra Manager `moodle-1` | Marketplace suspendido; solo quedan 2 reglas de firewall | Pendiente de limpieza |
-| Artifact Registry `moodle-sql-containers` | 2 etiquetas antiguas | Se reutiliza (política de limpieza en Terraform) |
-| Secret Manager | `db`, `admin` (en estado) y `redis` (huérfano) | `redis` pendiente de eliminar |
+| Repositorio | Carpeta sin Git; `gh` no instalado | `gh` instalado; fork creado y rama `actividad6` |
+| Terraform | Estado local de `version-b/relacional` desactualizado | Migrado a GCS; recursos recreados |
+| Cloud SQL `moodle-sql-mysql` | Detenida | Encendida y reutilizada; base nueva `moodle`; `moodledb` conservada |
+| Redis `moodle-sql-sessions` | Activo, fuera de Terraform | Eliminado (autorizado) |
+| VM `moodle-sql-demo` + disco | Detenida | Eliminada (autorizado) |
+| Marketplace `moodle-1` | Restos: firewall, bucket, cuenta de servicio | Eliminados (autorizado) |
+| Secreto `moodle-sql-redis-password` | Huérfano | Eliminado |
 
-## Fases
-
-| Fase | Estado | Evidencia |
-|---|---|---|
-| 1. Auditoría | Hecha | Esta tabla |
-| 2. Fork | Bloqueada: falta `gh auth login` del usuario | — |
-| 3. Arquitectura | Elegida por el usuario: Cloud Run + Cloud SQL + Filestore | `docs/arquitectura/` |
-| 4. Contenerización | Verificada en local | `docs/evidencias/logs/05*.log` |
-| 5. Artifact Registry | Pendiente | — |
-| 6. Terraform (backend GCS) | Código validado; estado migrado; plan pendiente de aprobación | — |
-| 7. Cloud SQL | Encendida, pendiente de apply | — |
-| 8. CI/CD IaC | Workflow escrito; requiere fork + WIF | `.github/workflows/terraform.yml` |
-| 9. CI/CD aplicación | Workflow escrito | `.github/workflows/application.yml` |
-| 10. Despliegue | Pendiente | — |
-| 11. Observabilidad | Código Terraform escrito | `infrastructure/terraform/monitoring.tf` |
-| 13–15. Evidencias, informe, presentación | Pendiente | — |
-
-## Problemas reales encontrados
-
-1. Moodle 5.2 desde Git no incluye `vendor/`: se añadió una etapa `composer install --no-dev` con `composer.lock`.
-2. `$CFG->sslproxy = true` rompía el acceso HTTP local: ahora depende de que `wwwroot` sea HTTPS.
-3. Primera prueba local: host de BD incorrecto y puerto 8080 ocupado por otra aplicación; se usó 8088.
+Nota: el estado local de `version-b/relacional/terraform.tfstate` quedó obsoleto. No ejecutes Terraform desde esa carpeta; el estado vigente está en `gs://project-8e56ba89-c5a4-43c4-aa6-tfstate/moodle/version-b`.

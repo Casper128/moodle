@@ -1,0 +1,14 @@
+$ terraform plan -detailed-exitcode (verificación final de deriva)
+No changes. Your infrastructure matches the configuration.
+exit code: 0 (0 = sin cambios)
+
+$ terraform output
+builder_service_account = "gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+cloud_sql_instance = "project-8e56ba89-c5a4-43c4-aa6:us-central1:moodle-sql-mysql"
+deployed_image = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:c8aa208fe713f76b10774c35612690971fc20411"
+image_repository = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle"
+install_job = "moodle-sql-install"
+monitoring_dashboard = "https://console.cloud.google.com/monitoring/dashboards/builder/bb82fccf-0b6f-45f7-96ac-81c4c0e1c330?project=project-8e56ba89-c5a4-43c4-aa6"
+moodle_url = "https://moodle-sql-web-264423911779.us-central1.run.app"
+terraform_service_account = "gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+workload_identity_provider = "projects/264423911779/locations/global/workloadIdentityPools/github-actions/providers/github"

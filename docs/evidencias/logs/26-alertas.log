@@ -1,0 +1,24 @@
+$ gcloud monitoring policies list
+DISPLAY_NAME: Moodle errores HTTP 5xx
+ENABLED: True
+CONDITIONS_DISPLAY_NAME: Más de 5 respuestas 5xx en 5 minutos
+CANALES: 1
+
+DISPLAY_NAME: Cloud SQL CPU alta
+ENABLED: True
+CONDITIONS_DISPLAY_NAME: CPU de MySQL > 80% durante 10 minutos
+CANALES: 1
+
+DISPLAY_NAME: Moodle no disponible
+ENABLED: True
+CONDITIONS_DISPLAY_NAME: Uptime check fallido
+CANALES: 1
+
+$ gcloud monitoring uptime list-configs
+DISPLAY_NAME: Moodle login
+PATH: /login/index.php
+PERIOD: 300s
+HOST: moodle-sql-web-264423911779.us-central1.run.app
+
+$ API v3 projects.alerts.list (incidentes)
+2026-11-24T05:18:29 2026-11-24T05:43:37 CLOSED Moodle no disponible

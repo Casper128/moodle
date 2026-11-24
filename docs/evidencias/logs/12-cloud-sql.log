@@ -1,0 +1,60 @@
+$ gcloud sql instances describe moodle-sql-mysql (configuración no sensible)
+databaseVersion: MYSQL_8_4
+gceZone: us-central1-c
+name: moodle-sql-mysql
+region: us-central1
+settings:
+  backupConfiguration:
+    binaryLogEnabled: true
+    enabled: true
+  dataDiskSizeGb: '20'
+  dataDiskType: PD_SSD
+  edition: ENTERPRISE
+  ipConfiguration:
+    ipv4Enabled: true
+  storageAutoResize: true
+  tier: db-f1-micro
+  userLabels:
+    app: moodle
+    entrega: actividad-6
+    managed-by: terraform
+state: RUNNABLE
+$ gcloud sql databases list
+NAME: mysql
+CHARSET: utf8mb3
+COLLATION: utf8mb3_general_ci
+
+NAME: information_schema
+CHARSET: utf8mb3
+COLLATION: utf8mb3_general_ci
+
+NAME: performance_schema
+CHARSET: utf8mb4
+COLLATION: utf8mb4_0900_ai_ci
+
+NAME: sys
+CHARSET: utf8mb4
+COLLATION: utf8mb4_0900_ai_ci
+
+NAME: moodledb
+CHARSET: utf8mb4
+COLLATION: utf8mb4_unicode_ci
+
+NAME: moodle
+CHARSET: utf8mb4
+COLLATION: utf8mb4_unicode_ci
+$ gcloud sql users list
+NAME: moodleuser
+HOST: %
+$ gcloud sql backups list (últimas)
+WINDOW_START_TIME: 2026-11-06 10:00
+STATUS: SUCCESSFUL
+TYPE: AUTOMATED
+
+WINDOW_START_TIME: 2026-11-05 10:00
+STATUS: SUCCESSFUL
+TYPE: AUTOMATED
+
+WINDOW_START_TIME: 2026-11-04 10:00
+STATUS: SUCCESSFUL
+TYPE: AUTOMATED
