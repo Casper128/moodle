@@ -19,13 +19,12 @@ Moodle: https://moodle-sql-web-264423911779.us-central1.run.app · Fork: https:/
 | 10. Despliegue | URL pública, login, curso, archivo y cron verificados | 17–21d |
 | 11. Observabilidad | Logs, métricas, uptime, 3 alertas, dashboard; incidente real | 22–26 |
 | 12. Diseño visual | Color institucional en el tema Boost, sin tocar el núcleo | 20b |
-| 13. Evidencias | 40 capturas reales e índice | `evidencias/INDICE.md` |
-| 14. Informe | Word y PDF (46 páginas) | `entregable/` |
+| 13. Evidencias | 48 capturas reales (8 de consola GCP) e índice | `evidencias/INDICE.md` |
+| 14. Informe | Word y PDF (53 páginas, 47 figuras) | `entregable/` |
 | 15. Presentación y guion | 12 diapositivas y guion con preguntas | `entregable/` |
 
 ## Pendientes reales
 
-- Capturas de la consola de GCP (requieren la sesión del usuario): lista y rutas en `evidencias/INDICE.md`. Después, regenerar el informe con `scripts/docs/`.
 - Completar en la portada del informe y en la presentación: institución, asignatura, docente e integrantes.
 - Coste: Filestore ≈ US$5,4/día. Tras la evaluación, desactivar `deletion_protection_enabled` mediante un PR y retirar los recursos de forma controlada.
 
