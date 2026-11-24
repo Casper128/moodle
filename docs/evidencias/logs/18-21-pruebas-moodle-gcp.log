@@ -1,0 +1,15 @@
+2026-11-24T05:40:41.205Z GET / -> https://moodle-sql-web-264423911779.us-central1.run.app/login/index.php | Log in to the site | Moodle
+2026-11-24T05:40:42.231Z GET /login/index.php -> https://moodle-sql-web-264423911779.us-central1.run.app/login/index.php | Log in to the site | Moodle
+2026-11-24T05:41:15.964Z login -> https://moodle-sql-web-264423911779.us-central1.run.app/admin/registration/index.php?returnurl=%2Fmy%2Findex.php | Registration | Administration | Moodle
+2026-11-24T05:41:20.131Z GET /my/ -> https://moodle-sql-web-264423911779.us-central1.run.app/my/ | Dashboard | Moodle
+2026-11-24T05:41:26.287Z GET /course/edit.php?category=1 -> https://moodle-sql-web-264423911779.us-central1.run.app/course/edit.php?category=1 | Add a new course | Moodle
+2026-11-24T05:41:31.275Z curso creado -> https://moodle-sql-web-264423911779.us-central1.run.app/course/view.php?id=2 | Course: Introducción a DevOps en GCP | Moodle
+2026-11-24T05:41:32.706Z GET /user/files.php -> https://moodle-sql-web-264423911779.us-central1.run.app/user/files.php | Private files | Moodle
+2026-11-24T05:41:35.568Z ERROR No element found for selector: #id_submitbutton
+2026-11-24T05:42:10.800Z GET / -> https://moodle-sql-web-264423911779.us-central1.run.app/login/index.php | Log in to the site | Moodle
+2026-11-24T05:42:11.882Z GET /login/index.php -> https://moodle-sql-web-264423911779.us-central1.run.app/login/index.php | Log in to the site | Moodle
+2026-11-24T05:42:14.389Z login -> https://moodle-sql-web-264423911779.us-central1.run.app/my/ | Dashboard | Moodle
+2026-11-24T05:42:16.037Z GET /course/search.php?search=DEVOPS-101 -> https://moodle-sql-web-264423911779.us-central1.run.app/course/search.php?search=DEVOPS-101 | Search results | Moodle
+2026-11-24T05:42:16.039Z curso ya existente: DEVOPS-101
+2026-11-24T05:42:17.999Z GET /user/files.php -> https://moodle-sql-web-264423911779.us-central1.run.app/user/files.php | Private files | Moodle
+2026-11-24T05:44:19.866Z ERROR Navigation timeout of 120000 ms exceeded

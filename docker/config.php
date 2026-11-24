@@ -32,5 +32,13 @@ $CFG->sslproxy = str_starts_with($CFG->wwwroot, 'https://');
 $CFG->session_handler_class = '\core\session\database';
 $CFG->lock_factory = '\core\lock\db_record_lock_factory';
 $CFG->preventwebinstall = true;
+// Apariencia institucional sin modificar el núcleo: ajustes forzados del tema Boost.
+$CFG->forced_plugin_settings = [
+    'theme_boost' => [
+        'brandcolor' => '#1f4e79',
+        'scss' => '.navbar.fixed-top { border-bottom: 3px solid #1f4e79; }'
+            . ' #page-header h1 { font-weight: 600; letter-spacing: -0.01em; }',
+    ],
+];
 $CFG->disableupdateautodeploy = true;
 require_once(__DIR__ . '/lib/setup.php');
