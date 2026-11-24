@@ -125,31 +125,34 @@ resource "google_monitoring_dashboard" "moodle" {
         { title = "Cloud SQL - CPU", filter = "${local.sql_filter} AND metric.type=\"cloudsql.googleapis.com/database/cpu/utilization\"", aligner = "ALIGN_MEAN", reducer = "REDUCE_MEAN", group = [] },
         { title = "Cloud SQL - conexiones", filter = "${local.sql_filter} AND metric.type=\"cloudsql.googleapis.com/database/network/connections\"", aligner = "ALIGN_MEAN", reducer = "REDUCE_SUM", group = [] },
         { title = "Uptime check superado", filter = "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\" AND resource.type=\"uptime_url\"", aligner = "ALIGN_FRACTION_TRUE", reducer = "REDUCE_MEAN", group = [] },
-        ] : {
-        xPos   = (i % 2) * 6
-        yPos   = floor(i / 2) * 4
-        width  = 6
-        height = 4
-        widget = {
-          title = w.title
-          xyChart = {
-            dataSets = [{
-              plotType = "LINE"
-              timeSeriesQuery = {
-                timeSeriesFilter = {
-                  filter = w.filter
-                  aggregation = {
-                    alignmentPeriod    = "60s"
-                    perSeriesAligner   = w.aligner
-                    crossSeriesReducer = w.reducer
-                    groupByFields      = w.group
+        ] : merge(
+        # La API omite los valores 0 y las listas vacías: se omiten aquí para evitar deriva.
+        (i % 2) == 0 ? {} : { xPos = 6 },
+        i < 2 ? {} : { yPos = floor(i / 2) * 4 },
+        {
+          width  = 6
+          height = 4
+          widget = {
+            title = w.title
+            xyChart = {
+              dataSets = [{
+                plotType   = "LINE"
+                targetAxis = "Y1"
+                timeSeriesQuery = {
+                  timeSeriesFilter = {
+                    filter = w.filter
+                    aggregation = merge({
+                      alignmentPeriod    = "60s"
+                      perSeriesAligner   = w.aligner
+                      crossSeriesReducer = w.reducer
+                    }, length(w.group) > 0 ? { groupByFields = w.group } : {})
                   }
                 }
-              }
-            }]
+              }]
+            }
           }
-        }
-      }]
+        })
+      ]
     }
   })
   depends_on = [google_project_service.apis]

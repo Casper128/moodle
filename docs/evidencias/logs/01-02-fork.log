@@ -1,0 +1,25 @@
+$ gh repo view moodle/moodle --json url,description,stargazerCount
+https://github.com/moodle/moodle
+Moodle - the world's open source learning platform
+rama por defecto: main
+
+$ gh repo view Casper128/moodle --json url,isFork,parent,defaultBranchRef
+https://github.com/Casper128/moodle
+isFork: true
+parent: moodle/moodle
+rama por defecto: actividad6
+
+$ git remote -v
+origin	https://github.com/Casper128/moodle.git (fetch)
+origin	https://github.com/Casper128/moodle.git (push)
+upstream	https://github.com/moodle/moodle.git (fetch)
+upstream	https://github.com/moodle/moodle.git (push)
+
+$ git branch -vv
+  MOODLE_502_STABLE 1ba79d273 [upstream/MOODLE_502_STABLE] weekly release 5.2.5+
+* actividad6        a9776cfcd [origin/actividad6] Documentación de arquitectura, README del despliegue y corrección del filtro de la métrica de logs
+
+$ git log --oneline -4
+a9776cfcd Documentación de arquitectura, README del despliegue y corrección del filtro de la métrica de logs
+ad14cb810 Actividad 6: contenedor, Terraform, CI/CD y observabilidad de Moodle en GCP
+1ba79d273 weekly release 5.2.5+
