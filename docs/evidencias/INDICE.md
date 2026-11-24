@@ -22,7 +22,7 @@ Todas las capturas son reales. «Navegador»: Chrome headless sobre la página p
 | [13-pipeline-iac-pr.png](13-pipeline-iac-pr.png) | 24-nov-2026 | CI/CD IaC | Navegador | PR #1 con el plan de Terraform comentado automáticamente por el pipeline. |
 | [14-pipeline-terraform-plan.png](14-pipeline-terraform-plan.png) | 24-nov-2026 | CI/CD IaC | Navegador | Ejecución del pipeline en el PR: validar y planificar correcto; apply omitido. |
 | [15a-pipeline-esperando-aprobacion.png](15a-pipeline-esperando-aprobacion.png) | 24-nov-2026 | CI/CD IaC | Navegador | Tras el merge, el job de apply queda esperando la aprobación del entorno produccion. |
-| [15b-aprobacion-entorno.png](15b-aprobacion-entorno.png) | 24-nov-2026 | CI/CD IaC | Usuario | Aprobación del despliegue por el responsable y apply completado. |
+| [15b-aprobacion-entorno.png](15b-aprobacion-entorno.png) | 24-nov-2026 | CI/CD IaC | Navegador (sesión del usuario) | Aprobación del despliegue por el responsable y apply completado. |
 | [15-pipeline-terraform-apply.png](15-pipeline-terraform-apply.png) | 24-nov-2026 | CI/CD IaC | Navegador | Ejecución completa: plan, apply y verificación. |
 | [15c-cambio-verificado-gcp.png](15c-cambio-verificado-gcp.png) | 24-nov-2026 | CI/CD IaC | Terminal | Cambio verificado en GCP: etiqueta entrega=actividad-6, acceso público, cron activo y plan sin deriva. |
 | [16-pipeline-aplicacion.png](16-pipeline-aplicacion.png) | 24-nov-2026 | CI/CD aplicación | Navegador | Pipeline de aplicación: validaciones, build, push a Artifact Registry y PR de despliegue. |
@@ -44,18 +44,18 @@ Todas las capturas son reales. «Navegador»: Chrome headless sobre la página p
 | [24-cron-moodle.png](24-cron-moodle.png) | 24-nov-2026 | Observabilidad | Terminal | Ejecuciones del cron de Moodle (Cloud Scheduler → Cloud Run job). |
 | [26-politicas-alertas-incidente.png](26-politicas-alertas-incidente.png) | 24-nov-2026 | Observabilidad | Terminal | Políticas de alerta, uptime check e incidente real abierto y cerrado automáticamente. |
 | [27-verificacion-final.png](27-verificacion-final.png) | 24-nov-2026 | Verificación | Terminal | Plan final sin cambios y outputs de Terraform. |
-| 10b-consola-artifact-registry.png | — | Artifact Registry | Usuario | Pendiente: captura manual (ver abajo) |
-| 12b-consola-cloud-sql.png | — | BD gestionada | Usuario | Pendiente: captura manual (ver abajo) |
-| 17b-consola-cloud-run.png | — | Despliegue | Usuario | Pendiente: captura manual (ver abajo) |
-| 22c-consola-logs-explorer.png | — | Observabilidad | Usuario | Pendiente: captura manual (ver abajo) |
-| 23b-consola-dashboard.png | — | Observabilidad | Usuario | Pendiente: captura manual (ver abajo) |
-| 24b-consola-metricas-cloud-sql.png | — | Observabilidad | Usuario | Pendiente: captura manual (ver abajo) |
-| 25-consola-uptime-check.png | — | Observabilidad | Usuario | Pendiente: captura manual (ver abajo) |
-| 26b-consola-politicas-alertas.png | — | Observabilidad | Usuario | Pendiente: captura manual (ver abajo) |
+| [10b-consola-artifact-registry.png](10b-consola-artifact-registry.png) | 24-nov-2026 | Artifact Registry | Navegador (sesión del usuario) | Consola de GCP · Artifact Registry: versiones de moodle, digest y etiquetas de commit. |
+| [12b-consola-cloud-sql.png](12b-consola-cloud-sql.png) | 24-nov-2026 | BD gestionada | Navegador (sesión del usuario) | Consola de GCP · Información general de moodle-sql-mysql: MySQL 8.4, edición, recursos y región. |
+| [17b-consola-cloud-run.png](17b-consola-cloud-run.png) | 24-nov-2026 | Despliegue | Navegador (sesión del usuario) | Consola de GCP · Historial de revisiones de moodle-sql-web; revisión 00003 con el 100% del tráfico. |
+| [22c-consola-logs-explorer.png](22c-consola-logs-explorer.png) | 24-nov-2026 | Observabilidad | Navegador (sesión del usuario) | Consola de GCP · Logs Explorer con resource.labels.service_name="moodle-sql-web" y resultados reales. |
+| [23b-consola-dashboard.png](23b-consola-dashboard.png) | 24-nov-2026 | Observabilidad | Navegador (sesión del usuario) | Consola de GCP · Panel «Moodle en GCP»: solicitudes, latencia p95, CPU y memoria del contenedor. |
+| [24b-consola-metricas-cloud-sql.png](24b-consola-metricas-cloud-sql.png) | 24-nov-2026 | Observabilidad | Navegador (sesión del usuario) | Consola de GCP · Estadísticas del sistema de Cloud SQL: CPU, disco y operaciones de lectura y escritura. |
+| [25-consola-uptime-check.png](25-consola-uptime-check.png) | 24-nov-2026 | Observabilidad | Navegador (sesión del usuario) | Consola de GCP · Uptime check «Moodle login»: porcentaje de disponibilidad, latencia y comprobaciones por región. |
+| [26b-consola-politicas-alertas.png](26b-consola-politicas-alertas.png) | 24-nov-2026 | Observabilidad | Navegador (sesión del usuario) | Consola de GCP · Tres políticas habilitadas e incidente «Moodle no disponible» cerrado, con horas de apertura y cierre. |
 
-## Capturas manuales de la consola de GCP
+## Capturas de la consola de GCP
 
-Requieren tu sesión. Guárdalas con el nombre indicado y vuelve a generar el informe.
+Ocho capturas tomadas desde Chrome con la sesión del usuario el 24-nov-2026. Se recortaron las pestañas y la barra de favoritos del navegador para no publicar datos personales; los originales quedan en `originales-consola/`, excluidos de Git.
 
 | Archivo | Ruta en la consola |
 |---|---|

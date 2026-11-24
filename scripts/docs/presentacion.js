@@ -97,7 +97,7 @@ function caption(s, text, x, y, w) {
 // 6. Artifact Registry
 {
   const s = slide('Artifact Registry y trazabilidad', 'Imagen');
-  img(s, EV('10-artifact-registry.png'), 0.6, 1.5, 7.4, 5.3, true);
+  img(s, EV(fs.existsSync(EV('10b-consola-artifact-registry.png')) ? '10b-consola-artifact-registry.png' : '10-artifact-registry.png'), 0.6, 1.5, 7.4, 5.3);
   bullets(s, ['Etiqueta = SHA del commit, sin latest', 'Commit c8aa208f → moodle:c8aa208f… → sha256:d9534289…', 'Política de limpieza en Terraform', 'Push con gh-builder (solo escritura en el repositorio)'], 8.3, 1.6, 4.6, 5, 15);
 }
 
@@ -127,16 +127,18 @@ function caption(s, text, x, y, w) {
 {
   const s = slide('Despliegue y base de datos', 'Cloud Run · Cloud SQL · Filestore');
   img(s, EV('20b-moodle-curso-apariencia.png'), 0.6, 1.5, 6.4, 4.0);
-  img(s, EV('21d-moodle-archivo-tras-redespliegue.png'), 7.2, 1.5, 5.7, 3.6);
-  bullets(s, ['URL: moodle-sql-web-264423911779.us-central1.run.app', 'Curso y archivo persisten tras desplegar la revisión 00003', 'Cloud SQL sin redes autorizadas; acceso por conector', 'Secretos por referencia de Secret Manager'], 0.6, 5.6, 12.3, 1.5, 14);
+  img(s, EV('17b-consola-cloud-run.png'), 7.2, 1.5, 5.7, 3.9);
+  bullets(s, ['URL: moodle-sql-web-264423911779.us-central1.run.app', 'Revisión 00003 con el 100 % del tráfico; curso y archivo persisten tras el redespliegue', 'Cloud SQL sin redes autorizadas; acceso por conector', 'Secretos por referencia de Secret Manager'], 0.6, 5.6, 12.3, 1.5, 14);
 }
 
 // 10. Observabilidad
 {
   const s = slide('Observabilidad', 'Logging · Monitoring');
-  img(s, EV('26-politicas-alertas-incidente.png'), 0.6, 1.5, 6.6, 3.2, true);
-  img(s, EV('23-cloud-monitoring-metricas.png'), 0.6, 4.85, 6.6, 2.1, true);
-  bullets(s, ['Uptime check /login/index.php desde 6 regiones', 'Alertas: indisponibilidad, 5xx, CPU de Cloud SQL', 'Incidente real: abierto 05:18, cerrado 05:43 de forma automática', 'Dashboard de 8 gráficos y métrica moodle_php_errors', 'Tráfico controlado: 90 × 200, 30 × 404'], 7.5, 1.6, 5.4, 5.2, 15);
+  img(s, EV('23b-consola-dashboard.png'), 0.6, 1.45, 4.0, 3.0);
+  img(s, EV('25-consola-uptime-check.png'), 4.67, 1.45, 4.0, 3.0);
+  img(s, EV('26b-consola-politicas-alertas.png'), 8.74, 1.45, 4.0, 3.0);
+  caption(s, 'Dashboard · Uptime check · Alertas (consola de GCP)', 0.6, 4.5, 12);
+  bullets(s, ['Uptime check /login/index.php desde 6 regiones', 'Alertas: indisponibilidad, 5xx, CPU de Cloud SQL', 'Incidente real: abierto 05:18, cerrado 05:43 de forma automática', 'Dashboard de 8 gráficos y métrica moodle_php_errors', 'Disponibilidad 24 h: 93,461 % (incluye la instalación privada)'], 0.6, 4.9, 12.2, 2.1, 14);
 }
 
 // 11. Demostración y resultados

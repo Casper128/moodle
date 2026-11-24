@@ -72,3 +72,4 @@ infrastructure/terraform/terraform.tfvars
 .env
 .env.*
 docs/evidencias/logs/*.env
+docs/evidencias/originales-consola/

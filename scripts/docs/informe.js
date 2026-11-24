@@ -322,6 +322,7 @@ add(H1('15. Observabilidad'),
   B('**Uptime e incidente real:** el uptime check falló entre 05:12 y 05:42 UTC, mientras el sitio era privado y se instalaba, y desde 05:52 alcanzó 1,0 en las 6 regiones. La alerta «Moodle no disponible» abrió un incidente a las 05:18:29 y lo cerró automáticamente a las 05:43:37, lo que confirma la cadena completa de detección y notificación.'),
   B('**Logs y despliegue:** el aviso de Apache AH00558 solo aparece en la revisión anterior; tras desplegar el cambio de `ServerName` dejó de registrarse.'),
   B('**Errores PHP:** la métrica `moodle_php_errors` no registró eventos en la ventana analizada.'),
+  B('**Consola de Monitoring:** el uptime check muestra una disponibilidad del 93,461 % en 24 h, que incluye la media hora en que el sitio fue privado durante la instalación, y una latencia media de 459,669 ms. Las estadísticas de Cloud SQL indican un uso de CPU p99 del 38,6 % y del disco del 6,7 %.'),
   ...EVF('22b-trafico-controlado.png'), ...EVF('22-cloud-logging.png'), ...EVF('22c-consola-logs-explorer.png'), ...EVF('23-cloud-monitoring-metricas.png'),
   ...EVF('23b-consola-dashboard.png'), ...EVF('24b-consola-metricas-cloud-sql.png'), ...EVF('24-cron-moodle.png'), ...EVF('25-consola-uptime-check.png'),
   ...EVF('26-politicas-alertas-incidente.png'), ...EVF('26b-consola-politicas-alertas.png'));
@@ -388,7 +389,7 @@ add(H1('19. Matriz de cumplimiento'),
     ['Moodle funcionando en GCP', URL, 'Cumplido', '18–21'],
     ['Logs y métricas reales', 'Cloud Logging y Monitoring', 'Cumplido', '22–24'],
     ['Monitorización y alertas', 'Uptime, 3 alertas, dashboard', 'Cumplido', '26'],
-    ['Capturas de la consola de GCP', 'Requieren la sesión del usuario', evid.filter(e => e[1] === 'usuario' && e[0].includes('consola')).every(e => fs.existsSync(path.join(EV, e[0]))) ? 'Cumplido' : 'Pendiente del usuario', 'docs/evidencias/INDICE.md'],
+    ['Capturas de la consola de GCP', '8 capturas con la sesión del usuario', evid.filter(e => e[1] === 'usuario' && e[0].includes('consola')).every(e => fs.existsSync(path.join(EV, e[0]))) ? 'Cumplido' : 'Pendiente del usuario', 'docs/evidencias/INDICE.md'],
     ['Documento, presentación y guion', 'docs/entregable/', 'Cumplido', '—'],
     ['Repositorio sin secretos', 'Revisión de logs y .gitignore', 'Cumplido', '—'],
   ], [1.4, 1.6, 0.8, 0.8], 'Matriz de cumplimiento.'));
@@ -496,7 +497,7 @@ Packer.toBuffer(doc).then(buf => { fs.writeFileSync(OUT, buf); console.log('DOCX
 // Índice de evidencias en Markdown
 const rows = evid.map(([f, tipo, req, desc]) => {
   const ok = fs.existsSync(path.join(EV, f));
-  return `| ${ok ? `[${f}](${f})` : f} | ${ok ? '24-nov-2026' : '—'} | ${req} | ${{ web: 'Navegador', term: 'Terminal', usuario: 'Usuario' }[tipo]} | ${ok ? desc : 'Pendiente: captura manual (ver abajo)'} |`;
+  return `| ${ok ? `[${f}](${f})` : f} | ${ok ? '24-nov-2026' : '—'} | ${req} | ${{ web: 'Navegador', term: 'Terminal', usuario: 'Navegador (sesión del usuario)' }[tipo]} | ${ok ? desc : 'Pendiente: captura manual (ver abajo)'} |`;
 });
 fs.writeFileSync(path.join(EV, 'INDICE.md'), `# Índice de evidencias
 
@@ -506,9 +507,9 @@ Todas las capturas son reales. «Navegador»: Chrome headless sobre la página p
 |---|---|---|---|---|
 ${rows.join('\n')}
 
-## Capturas manuales de la consola de GCP
+## Capturas de la consola de GCP
 
-Requieren tu sesión. Guárdalas con el nombre indicado y vuelve a generar el informe.
+Ocho capturas tomadas desde Chrome con la sesión del usuario el 24-nov-2026. Se recortaron las pestañas y la barra de favoritos del navegador para no publicar datos personales; los originales quedan en \`originales-consola/\`, excluidos de Git.
 
 | Archivo | Ruta en la consola |
 |---|---|
