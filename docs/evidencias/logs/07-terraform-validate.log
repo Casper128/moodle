@@ -1,0 +1,13 @@
+$ terraform fmt -check -recursive && terraform validate
+(fmt sin cambios)
+Success! The configuration is valid.
+
+
+$ terraform state list | wc -l
+      65
+$ gcloud storage ls -L gs://project-8e56ba89-c5a4-43c4-aa6-tfstate/moodle/version-b/ (resumen)
+gs://project-8e56ba89-c5a4-43c4-aa6-tfstate/moodle/version-b/default.tfstate#1795496709702324
+gs://project-8e56ba89-c5a4-43c4-aa6-tfstate/moodle/version-b/default.tfstate#1795496734047247
+gs://project-8e56ba89-c5a4-43c4-aa6-tfstate/moodle/version-b/default.tfstate#1795496813736293
+gs://project-8e56ba89-c5a4-43c4-aa6-tfstate/moodle/version-b/default.tfstate#1795496910776552
+gs://project-8e56ba89-c5a4-43c4-aa6-tfstate/moodle/version-b/default.tfstate#1795496911319096

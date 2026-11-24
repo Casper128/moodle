@@ -1,0 +1,15 @@
+$ ls (raíz del fork, rama actividad6)
+CONTRIBUTING.md COPYING.txt Dockerfile Gruntfile.js INSTALL.txt README.md README.moodle.md TRADEMARK.txt UPGRADING.md admin/ composer.json composer.lock config-dist.php docker/ docs/ index.php infrastructure/ lib/ npm-shrinkwrap.json package.json phpcs.xml.dist phpunit.xml.dist public/ scripts/ tsconfig.json 
+
+$ find infrastructure .github docker docs -type f | grep -v -e .terraform/ -e evidencias/
+.dockerignore
+.github/workflows/application.yml
+.github/workflows/terraform.yml
+Dockerfile
+docker/apache.conf
+docker/config.php
+docker/entrypoint.sh
+docker/install.php
+docker/moodle.ini
+docs/PROGRESS.md
+docs/arquitectura/arquitectura.md
