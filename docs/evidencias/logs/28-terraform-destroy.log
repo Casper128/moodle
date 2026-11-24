@@ -1,0 +1,178 @@
+Acquiring state lock. This may take a few moments...
+google_service_account_iam_member.wif["terraform"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com/roles/iam.workloadIdentityUser/principalSet://iam.googleapis.com/projects/264423911779/locations/global/workloadIdentityPools/github-actions/attribute.repository/Casper128/moodle]
+google_storage_bucket_iam_member.state: Destroying... [id=b/project-8e56ba89-c5a4-43c4-aa6-tfstate/roles/storage.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/artifactregistry.admin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/artifactregistry.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/logging.configWriter"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/logging.configWriter/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/file.editor"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/file.editor/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_service_account_iam_member.wif["builder"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com/roles/iam.workloadIdentityUser/principalSet://iam.googleapis.com/projects/264423911779/locations/global/workloadIdentityPools/github-actions/attribute.repository/Casper128/moodle]
+google_project_iam_member.terraform["roles/iam.workloadIdentityPoolAdmin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/iam.workloadIdentityPoolAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_iam_workload_identity_pool_provider.github: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/global/workloadIdentityPools/github-actions/providers/github]
+google_monitoring_alert_policy.uptime: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/alertPolicies/3932374196610057995]
+google_monitoring_alert_policy.errors_5xx: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/alertPolicies/12159389124930356185]
+google_monitoring_alert_policy.errors_5xx: Destruction complete after 2s
+google_project_iam_member.terraform["roles/serviceusage.serviceUsageAdmin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/serviceusage.serviceUsageAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_monitoring_alert_policy.uptime: Destruction complete after 3s
+google_logging_metric.php_errors: Destroying... [id=moodle_php_errors]
+google_logging_metric.php_errors: Destruction complete after 1s
+google_project_iam_member.terraform["roles/cloudsql.admin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/cloudsql.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_service_account_iam_member.wif["builder"]: Destruction complete after 6s
+google_service_account_iam_member.wif["terraform"]: Destruction complete after 6s
+google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/iam.serviceAccountAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/iam.serviceAccountUser"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/iam.serviceAccountUser/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_storage_bucket_iam_member.state: Destruction complete after 6s
+module.cloudrun.google_cloud_run_v2_service_iam_member.public[0]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/services/moodle-sql-web/roles/run.invoker/allUsers]
+google_iam_workload_identity_pool_provider.github: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...yPools/github-actions/providers/github, 00m10s elapsed]
+google_project_iam_member.terraform["roles/iam.workloadIdentityPoolAdmin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/ia...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/artifactregistry.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/ar...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/logging.configWriter"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/lo...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/file.editor"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/fi...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_iam_workload_identity_pool_provider.github: Destruction complete after 12s
+google_monitoring_dashboard.moodle: Destroying... [id=projects/264423911779/dashboards/bb82fccf-0b6f-45f7-96ac-81c4c0e1c330]
+google_project_iam_member.terraform["roles/serviceusage.serviceUsageAdmin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/se...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_monitoring_dashboard.moodle: Destruction complete after 1s
+google_monitoring_alert_policy.sql_cpu: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/alertPolicies/15573896708951148349]
+google_project_iam_member.terraform["roles/cloudsql.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/cl...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_monitoring_alert_policy.sql_cpu: Destruction complete after 1s
+google_project_iam_member.terraform["roles/secretmanager.admin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/secretmanager.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.cloudrun.google_cloud_run_v2_service_iam_member.public[0]: Destruction complete after 9s
+google_project_iam_member.terraform["roles/cloudscheduler.admin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/cloudscheduler.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/ia...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/iam.serviceAccountUser"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/ia...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/serviceusage.serviceUsageAdmin"]: Destruction complete after 17s
+google_artifact_registry_repository_iam_member.builder: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/repositories/moodle-sql-containers/roles/artifactregistry.writer/serviceAccount:gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/logging.configWriter"]: Destruction complete after 19s
+google_project_iam_member.terraform["roles/run.admin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/run.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/iam.workloadIdentityPoolAdmin"]: Destruction complete after 20s
+google_project_iam_member.terraform["roles/monitoring.admin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/monitoring.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/file.editor"]: Destruction complete after 20s
+module.cloudrun.google_cloud_scheduler_job.cron: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron]
+google_project_iam_member.terraform["roles/artifactregistry.admin"]: Destruction complete after 20s
+google_project_iam_member.terraform["roles/resourcemanager.projectIamAdmin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/resourcemanager.projectIamAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.cloudrun.google_cloud_scheduler_job.cron: Destruction complete after 1s
+google_project_iam_member.terraform["roles/compute.networkAdmin"]: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/compute.networkAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/cloudsql.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/cl...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m20s elapsed]
+google_project_iam_member.terraform["roles/secretmanager.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/se...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/cloudscheduler.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/cl...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_artifact_registry_repository_iam_member.builder: Destruction complete after 6s
+google_monitoring_uptime_check_config.moodle: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/uptimeCheckConfigs/moodle-login-OTHv88G3aTQ]
+google_project_iam_member.terraform["roles/iam.serviceAccountUser"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/ia...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m20s elapsed]
+google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/ia...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m20s elapsed]
+google_monitoring_uptime_check_config.moodle: Destruction complete after 0s
+google_iam_workload_identity_pool.github: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/global/workloadIdentityPools/github-actions]
+google_project_iam_member.terraform["roles/cloudsql.admin"]: Destruction complete after 23s
+google_monitoring_notification_channel.email: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/notificationChannels/3478178038128363060]
+google_monitoring_notification_channel.email: Destruction complete after 0s
+google_project_iam_member.terraform["roles/iam.serviceAccountUser"]: Destruction complete after 21s
+module.cloudrun.google_cloud_run_v2_job_iam_member.scheduler: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron/roles/run.invoker/serviceAccount:moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.cloudrun.google_cloud_run_v2_service.web: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/services/moodle-sql-web]
+google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"]: Destruction complete after 22s
+google_artifact_registry_repository.moodle: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/repositories/moodle-sql-containers]
+module.cloudrun.google_cloud_run_v2_service.web: Destruction complete after 2s
+google_artifact_registry_repository.moodle: Destruction complete after 1s
+google_project_iam_member.terraform["roles/run.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/ru...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/monitoring.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/mo...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/resourcemanager.projectIamAdmin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/re...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+google_project_iam_member.terraform["roles/compute.networkAdmin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/co...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m10s elapsed]
+module.cloudrun.google_cloud_run_v2_job_iam_member.scheduler: Destruction complete after 6s
+module.cloudrun.google_service_account.scheduler: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.cloudrun.google_cloud_run_v2_job.task["cron"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron]
+module.cloudrun.google_cloud_run_v2_job.task["install"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-install]
+module.cloudrun.google_service_account.scheduler: Destruction complete after 1s
+google_project_iam_member.terraform["roles/compute.networkAdmin"]: Destruction complete after 13s
+google_project_iam_member.terraform["roles/secretmanager.admin"]: Still destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/se...-c5a4-43c4-aa6.iam.gserviceaccount.com, 00m20s elapsed]
+google_project_iam_member.terraform["roles/run.admin"]: Destruction complete after 15s
+google_project_iam_member.terraform["roles/secretmanager.admin"]: Destruction complete after 21s
+google_project_iam_member.terraform["roles/cloudscheduler.admin"]: Destruction complete after 20s
+module.cloudrun.google_cloud_run_v2_job.task["cron"]: Destruction complete after 2s
+module.cloudrun.google_cloud_run_v2_job.task["install"]: Destruction complete after 2s
+google_project_iam_member.sql: Destroying... [id=project-8e56ba89-c5a4-43c4-aa6/roles/cloudsql.client/serviceAccount:moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_secret_manager_secret_iam_member.runtime["db"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-db-password/roles/secretmanager.secretAccessor/serviceAccount:moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_secret_manager_secret_version.admin: Destroying... [id=projects/264423911779/secrets/moodle-sql-admin-password/versions/4]
+google_secret_manager_secret_iam_member.runtime["admin"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-admin-password/roles/secretmanager.secretAccessor/serviceAccount:moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.networking.google_filestore_instance.moodle: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1-a/instances/moodle-sql-files]
+module.database.google_sql_database.moodle: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/instances/moodle-sql-mysql/databases/moodle]
+module.database.google_sql_user.moodle: Destroying... [id=moodleuser/%/moodle-sql-mysql]
+google_project_iam_member.terraform["roles/resourcemanager.projectIamAdmin"]: Destruction complete after 15s
+google_secret_manager_secret_version.db: Destroying... [id=projects/264423911779/secrets/moodle-sql-db-password/versions/2]
+google_project_iam_member.terraform["roles/monitoring.admin"]: Destruction complete after 15s
+google_service_account.ci["builder"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_service_account.ci["builder"]: Destruction complete after 1s
+google_service_account.ci["terraform"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_secret_manager_secret_version.admin: Destruction complete after 1s
+google_service_account.ci["terraform"]: Destruction complete after 0s
+random_password.admin: Destroying... [id=none]
+random_password.admin: Destruction complete after 0s
+google_secret_manager_secret_version.db: Destruction complete after 1s
+google_iam_workload_identity_pool.github: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...l/workloadIdentityPools/github-actions, 00m10s elapsed]
+module.database.google_sql_user.moodle: Destruction complete after 1s
+random_password.db: Destroying... [id=none]
+random_password.db: Destruction complete after 1s
+google_iam_workload_identity_pool.github: Destruction complete after 11s
+google_secret_manager_secret_iam_member.runtime["db"]: Destruction complete after 6s
+google_secret_manager_secret_iam_member.runtime["admin"]: Destruction complete after 6s
+google_secret_manager_secret.password["admin"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-admin-password]
+google_secret_manager_secret.password["db"]: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-db-password]
+google_secret_manager_secret.password["db"]: Destruction complete after 1s
+google_secret_manager_secret.password["admin"]: Destruction complete after 2s
+google_project_iam_member.sql: Destruction complete after 8s
+google_service_account.runtime: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_service_account.runtime: Destruction complete after 1s
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 00m10s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 00m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 00m20s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 00m20s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 00m30s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 00m30s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 00m40s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 00m40s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 00m50s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 00m50s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 01m00s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 01m00s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 01m10s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 01m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 01m20s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 01m20s elapsed]
+module.database.google_sql_database.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...nces/moodle-sql-mysql/databases/moodle, 01m30s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 01m30s elapsed]
+module.database.google_sql_database.moodle: Destruction complete after 1m38s
+module.database.google_sql_database_instance.moodle: Destroying... [id=moodle-sql-mysql]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 01m40s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 00m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 01m50s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 00m20s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 02m00s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 00m30s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 02m10s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 00m40s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 02m20s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 00m50s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 02m30s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 01m00s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 02m40s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 01m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 02m50s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 01m20s elapsed]
+module.networking.google_filestore_instance.moodle: Still destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6...-central1-a/instances/moodle-sql-files, 03m00s elapsed]
+module.networking.google_filestore_instance.moodle: Destruction complete after 3m8s
+module.networking.google_compute_subnetwork.moodle: Destroying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/regions/us-central1/subnetworks/moodle-sql-run]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 01m30s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 01m40s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 01m50s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 02m00s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 02m10s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 02m20s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 02m30s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 02m40s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 02m50s elapsed]
+module.database.google_sql_database_instance.moodle: Still destroying... [id=moodle-sql-mysql, 03m00s elapsed]
+module.database.google_sql_database_instance.moodle: Destruction complete after 3m7s
+
+Error: Error when reading or editing Subnetwork: googleapi: Error 400: The subnetwork resource 'projects/project-8e56ba89-c5a4-43c4-aa6/regions/us-central1/subnetworks/moodle-sql-run' is already being used by 'projects/project-8e56ba89-c5a4-43c4-aa6/regions/us-central1/addresses/serverless-ipv4-cloudrun-1795496900015713873', resourceInUseByAnotherResource
+
+
+== 2026-11-24T14:43:13Z Cierre: facturación ya desvinculada por el responsable; bucket del estado eliminado; proyecto eliminado
+    $ gcloud projects undelete project-8e56ba89-c5a4-43c4-aa6
+
+See https://cloud.google.com/resource-manager/docs/creating-managing-projects for information on shutting down projects.
+project-8e56ba89-c5a4-43c4-aa6	DELETE_REQUESTED

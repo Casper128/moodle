@@ -2,7 +2,7 @@
 
 Fork de [moodle/moodle](https://github.com/moodle/moodle) (rama base `MOODLE_502_STABLE`, Moodle 5.2.5+) preparado para la Actividad 6 — opción B: CI/CD de infraestructura como código. El README original de Moodle está en [README.moodle.md](README.moodle.md).
 
-- **URL:** https://moodle-sql-web-264423911779.us-central1.run.app
+- **URL (retirada el 24-nov-2026 para detener la facturación):** https://moodle-sql-web-264423911779.us-central1.run.app
 - **Rama de trabajo:** `actividad6` (por defecto en este fork). `main` sigue a upstream.
 - **Proyecto GCP:** `project-8e56ba89-c5a4-43c4-aa6`, región `us-central1`.
 

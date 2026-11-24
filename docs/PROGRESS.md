@@ -23,10 +23,20 @@ Moodle: https://moodle-sql-web-264423911779.us-central1.run.app · Fork: https:/
 | 14. Informe | Word y PDF (53 páginas, 47 figuras) | `entregable/` |
 | 15. Presentación y guion | 12 diapositivas y guion con preguntas | `entregable/` |
 
+## Retirada de la infraestructura (24-nov-2026)
+
+A petición del responsable, tras completar las evidencias, se eliminó toda la infraestructura para detener la facturación:
+
+1. Se desactivó la protección contra borrado de Cloud SQL y Filestore (apply local de 2 cambios).
+2. `terraform plan -destroy` revisado (66 recursos) y aplicado: Cloud Run, jobs, Scheduler, Cloud SQL (incluida la base antigua `moodledb`), Filestore, Secret Manager, Artifact Registry con sus imágenes, monitorización, WIF y cuentas de servicio.
+3. La subred quedó retenida por una IP interna de Cloud Run que Google libera de forma diferida. Mientras tanto, el responsable desvinculó la facturación del proyecto, lo que impide borrar recursos de Compute.
+4. Se borró el bucket del estado y se eliminó el proyecto completo (`gcloud projects delete`, estado `DELETE_REQUESTED`). Es recuperable hasta 30 días con `gcloud projects undelete project-8e56ba89-c5a4-43c4-aa6`; después, GCP lo elimina definitivamente.
+
+Log: `evidencias/logs/28-terraform-destroy.log`. La URL de Moodle ya no responde. Para recrear la solución: crear el bucket del estado, `terraform init/plan/apply` y ejecutar el job de instalación (README); los datos de la demostración no se conservaron, por decisión del responsable.
+
 ## Pendientes reales
 
 - Completar en la portada del informe y en la presentación: institución, asignatura, docente e integrantes.
-- Coste: Filestore ≈ US$5,4/día. Tras la evaluación, desactivar `deletion_protection_enabled` mediante un PR y retirar los recursos de forma controlada.
 
 ## Auditoría inicial (23-nov-2026)
 
