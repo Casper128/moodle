@@ -6,4 +6,7 @@ state_bucket = "project-8e56ba89-c5a4-43c4-aa6-tfstate"
 # Imagen inmutable publicada por el pipeline de aplicación (etiqueta = commit SHA).
 container_image = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a"
 
-site_ready = false
+site_ready = true
+
+# Cambio de demostración del pipeline IaC: etiqueta visible en todos los recursos.
+labels = { entrega = "actividad-6" }
