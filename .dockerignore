@@ -1,0 +1,14 @@
+.git
+.github
+.grunt
+node_modules
+vendor
+infrastructure
+docs
+scripts/local
+**/.terraform
+*.tfstate*
+*.tfvars
+.env*
+Dockerfile
+.dockerignore

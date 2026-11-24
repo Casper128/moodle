@@ -1,0 +1,4 @@
+# Copia como terraform.tfvars solo para pruebas locales; no lo subas al repositorio.
+# Las contraseñas no se configuran: Terraform las genera y las guarda en Secret Manager.
+admin_email = "admin@example.com"
+alert_email = "alertas@example.com"

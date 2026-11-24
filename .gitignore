@@ -61,3 +61,14 @@ jsconfig.json
 UPGRADING-CURRENT.md
 .phpunit.cache
 tsconfig.aliases.json
+
+# --- Despliegue en GCP (fork Casper128/moodle) ---
+infrastructure/terraform/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan*
+infrastructure/terraform/terraform.tfvars
+.env
+.env.*
+docs/evidencias/logs/*.env

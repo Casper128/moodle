@@ -1,0 +1,95 @@
+# CI/CD de aplicación: construye Moodle desde este repositorio, lo publica en Artifact
+# Registry con la etiqueta del commit y propone el despliegue mediante un PR que cambia
+# deploy.auto.tfvars. Solo Terraform modifica Cloud Run, así los pipelines no se pisan.
+name: Aplicación Moodle
+
+on:
+  push:
+    branches: [actividad6]
+    paths-ignore: ["infrastructure/**", "docs/**", "**/*.md", ".github/workflows/terraform.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: application-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  IMAGE: ${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/moodle-sql-containers/moodle
+
+jobs:
+  build:
+    name: Construir y publicar imagen
+    runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.push.outputs.digest }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validaciones
+        run: |
+          for f in docker/*.php; do php -l "$f"; done
+          sh -n docker/entrypoint.sh
+          python3 -c "import json; json.load(open('composer.json'))"
+          docker run --rm -i hadolint/hadolint:v2.12.0 hadolint --failure-threshold error - < Dockerfile
+      - uses: google-github-actions/auth@v2
+        id: auth
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_BUILDER_SA }}
+          token_format: access_token
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ vars.GCP_REGION }}-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+      - uses: docker/setup-buildx-action@v3
+      - name: Construir y publicar
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ env.IMAGE }}:${{ github.sha }}
+          build-args: GIT_SHA=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: Verificar imagen en Artifact Registry
+        run: |
+          gcloud artifacts docker images describe "$IMAGE:${{ github.sha }}" \
+            --format="table(image_summary.digest,image_summary.fully_qualified_digest)"
+          {
+            echo "### Imagen publicada"
+            echo "- Commit: \`${{ github.sha }}\`"
+            echo "- Etiqueta: \`$IMAGE:${{ github.sha }}\`"
+            echo "- Digest: \`${{ steps.push.outputs.digest }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  propose-deploy:
+    name: Proponer despliegue (PR a Terraform)
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Crear PR con la nueva imagen
+        run: |
+          branch="deploy/${GITHUB_SHA::12}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          sed -i -E "s#^container_image = .*#container_image = \"$IMAGE:$GITHUB_SHA\"#" infrastructure/terraform/deploy.auto.tfvars
+          git commit -am "deploy: Moodle ${GITHUB_SHA::12}"
+          git push origin "$branch"
+          gh pr create --base actividad6 --head "$branch" \
+            --title "Desplegar imagen ${GITHUB_SHA::12}" \
+            --body "Imagen \`$IMAGE:$GITHUB_SHA\` (digest \`${{ needs.build.outputs.digest }}\`) publicada por la ejecución ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}. Al fusionar, el pipeline de Terraform la despliega tras la aprobación del entorno."
+          # Los PR creados con GITHUB_TOKEN no disparan workflows: se lanza el plan explícitamente.
+          gh workflow run terraform.yml --ref "$branch"

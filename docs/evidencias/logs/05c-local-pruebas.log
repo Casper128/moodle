@@ -1,0 +1,15 @@
+== Prueba local 2026-11-24T04:54:54Z
+login POST=303 -> http://localhost:8088/login/index.php?testsession=2
+<title>Dashboard | Moodle</title>
+Could not open input file: admin/tool/uploadcourse/cli/uploadcourse.php
+== Reinicio de contenedores
+login POST=303 -> http://localhost:8088/login/index.php?testsession=2
+persistencia BD: 
+Courses created: 1
+Courses updated: 0
+Courses deleted: 0
+Courses errors: 0
+== Reinicio de contenedores
+login POST=303 -> http://localhost:8088/login/index.php?testsession=2
+persistencia BD: DEVOPS-101
+Could not open input file: public/admin/cli/cron.php

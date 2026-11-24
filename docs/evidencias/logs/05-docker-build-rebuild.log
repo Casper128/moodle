@@ -1,0 +1,87 @@
+#0 building with "condescending_keldysh" instance using docker-container driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.07kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:562111b88caa79c71391c0c4d3c2114a7d5c35915c20561fd893cb1e07929e6b
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/composer:2@sha256:50ea4d33fdcde1adb0f045547295faa1548b33872e5f789dae5b02ce2fb5de93
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 218B done
+#4 DONE 0.0s
+
+#5 [vendor 1/4] FROM docker.io/library/composer:2@sha256:50ea4d33fdcde1adb0f045547295faa1548b33872e5f789dae5b02ce2fb5de93
+#5 resolve docker.io/library/composer:2@sha256:50ea4d33fdcde1adb0f045547295faa1548b33872e5f789dae5b02ce2fb5de93 done
+#5 DONE 0.0s
+
+#6 [stage-1  1/11] FROM docker.io/library/ubuntu:24.04@sha256:562111b88caa79c71391c0c4d3c2114a7d5c35915c20561fd893cb1e07929e6b
+#6 resolve docker.io/library/ubuntu:24.04@sha256:562111b88caa79c71391c0c4d3c2114a7d5c35915c20561fd893cb1e07929e6b done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 8.69MB 3.8s done
+#7 DONE 3.9s
+
+#8 [stage-1  2/11] RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends       apache2 libapache2-mod-php8.3 php8.3-cli php8.3-mysql php8.3-xml       php8.3-curl php8.3-gd php8.3-intl php8.3-mbstring php8.3-zip       php8.3-soap php8.3-bcmath ca-certificates gosu  && rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [stage-1  3/11] COPY --chown=root:www-data . /var/www/moodle
+#9 ...
+
+#10 [vendor 3/4] COPY composer.json composer.lock ./
+#10 CACHED
+
+#11 [vendor 2/4] WORKDIR /app
+#11 CACHED
+
+#12 [vendor 4/4] RUN composer install --no-dev --no-interaction --no-progress --no-scripts       --no-autoloader --ignore-platform-reqs --prefer-dist  && composer dump-autoload --no-dev --no-scripts
+#12 CACHED
+
+#9 [stage-1  3/11] COPY --chown=root:www-data . /var/www/moodle
+#9 DONE 9.1s
+
+#13 [stage-1  4/11] COPY --from=vendor --chown=root:www-data /app/vendor /var/www/moodle/vendor
+#13 DONE 1.3s
+
+#14 [stage-1  5/11] COPY docker/moodle.ini /etc/php/8.3/mods-available/moodle.ini
+#14 DONE 0.0s
+
+#15 [stage-1  6/11] COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
+#15 DONE 0.0s
+
+#16 [stage-1  7/11] COPY docker/config.php /var/www/moodle/config.php
+#16 DONE 0.0s
+
+#17 [stage-1  8/11] COPY docker/install.php /opt/moodle/install.php
+#17 DONE 0.0s
+
+#18 [stage-1  9/11] COPY docker/entrypoint.sh /usr/local/bin/moodle-entrypoint
+#18 DONE 0.0s
+
+#19 [stage-1 10/11] RUN phpenmod moodle && sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf  && chmod +x /usr/local/bin/moodle-entrypoint  && rm -rf /var/www/moodle/docker
+#19 DONE 0.7s
+
+#20 [stage-1 11/11] WORKDIR /var/www/moodle
+#20 DONE 0.0s
+
+#21 exporting to oci image format
+#21 exporting layers
+#21 exporting layers 10.5s done
+#21 exporting manifest sha256:292924cc9fb9ebf7ba130b3ab1470063e02e6880989c1f8e6fbad0659c68e9f0
+#21 exporting manifest sha256:292924cc9fb9ebf7ba130b3ab1470063e02e6880989c1f8e6fbad0659c68e9f0 done
+#21 exporting config sha256:103da99313f0647943c0b173a0045a5554586f7670ba8987a6022e0a7f5b49ec done
+#21 sending tarball
+#21 ...
+
+#22 importing to docker
+#22 DONE 0.0s
+
+#21 exporting to oci image format
+#21 sending tarball 2.2s done
+#21 DONE 12.7s
+
+View build details: docker-desktop://dashboard/build/condescending_keldysh/condescending_keldysh0/pga27a61kpiq59eoj48dz674v

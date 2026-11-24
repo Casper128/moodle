@@ -1,0 +1,115 @@
+# CI/CD de infraestructura como código (Actividad 6 - opción B).
+# PR -> fmt/validate/plan comentado en el PR. Merge en actividad6 -> plan + aprobación del
+# entorno "produccion" + apply + verificación. Un único grupo de concurrencia protege el estado.
+name: Terraform IaC
+
+on:
+  pull_request:
+    branches: [actividad6]
+    paths: ["infrastructure/terraform/**", ".github/workflows/terraform.yml"]
+  push:
+    branches: [actividad6]
+    paths: ["infrastructure/terraform/**", ".github/workflows/terraform.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: terraform-state
+  cancel-in-progress: false
+
+env:
+  TF_IN_AUTOMATION: "true"
+  TF_INPUT: "false"
+  TF_VAR_admin_email: ${{ secrets.MOODLE_ADMIN_EMAIL }}
+  TF_VAR_alert_email: ${{ secrets.ALERT_EMAIL }}
+
+defaults:
+  run:
+    working-directory: infrastructure/terraform
+
+jobs:
+  plan:
+    name: Validar y planificar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.16.6
+          terraform_wrapper: false
+      - name: terraform fmt -check
+        run: terraform fmt -check -recursive
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_TF_SA }}
+      - name: terraform init
+        run: terraform init -backend-config="bucket=${{ vars.TF_STATE_BUCKET }}"
+      - name: terraform validate
+        run: terraform validate -no-color
+      - name: terraform plan
+        id: plan
+        run: |
+          set +e
+          terraform plan -lock-timeout=5m -no-color -detailed-exitcode -out=tfplan > plan.txt
+          code=$?
+          set -e
+          cat plan.txt
+          [ "$code" = 1 ] && exit 1
+          echo "changes=$([ "$code" = 2 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          summary=$(grep -E '^(Plan:|No changes)' plan.txt || true)
+          {
+            echo "### Terraform plan"
+            echo "$summary"
+            echo '<details><summary>Plan completo (sin valores sensibles)</summary>'
+            echo; echo '```'; tail -c 60000 plan.txt; echo '```'; echo '</details>'
+          } > summary.md
+          cat summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Comentar plan en el PR
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr comment ${{ github.event.pull_request.number }} --body-file summary.md
+
+  apply:
+    name: Aplicar (requiere aprobación)
+    needs: plan
+    if: github.ref == 'refs/heads/actividad6' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    environment: produccion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.16.6
+          terraform_wrapper: false
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_TF_SA }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: terraform init
+        run: terraform init -backend-config="bucket=${{ vars.TF_STATE_BUCKET }}"
+      # El plan binario no se publica como artefacto: se regenera aquí bajo el mismo bloqueo.
+      - name: terraform plan
+        run: terraform plan -lock-timeout=5m -no-color -out=tfplan
+      - name: terraform apply
+        run: terraform apply -lock-timeout=5m -no-color tfplan
+      - name: Verificar infraestructura
+        run: |
+          url=$(terraform output -raw moodle_url)
+          image=$(terraform output -raw deployed_image)
+          gcloud run services describe moodle-sql-web --region us-central1 \
+            --format="table(metadata.name,status.latestReadyRevisionName,status.url)"
+          gcloud run services describe moodle-sql-web --region us-central1 --format="value(metadata.labels)"
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$url/login/index.php")
+          {
+            echo "### Apply completado"
+            echo "- URL: $url (HTTP $code en /login/index.php)"
+            echo "- Imagen: \`$image\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          terraform plan -lock-timeout=5m -no-color -detailed-exitcode && echo "Sin deriva tras el apply"
