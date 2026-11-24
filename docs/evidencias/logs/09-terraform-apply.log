@@ -1,0 +1,156 @@
+Acquiring state lock. This may take a few moments...
+google_secret_manager_secret_version.db: Destroying... [id=projects/264423911779/secrets/moodle-sql-db-password/versions/1]
+google_secret_manager_secret_version.admin: Destroying... [id=projects/264423911779/secrets/moodle-sql-admin-password/versions/3]
+google_service_account.ci["builder"]: Creating...
+google_service_account.ci["terraform"]: Creating...
+google_logging_metric.php_errors: Creating...
+google_secret_manager_secret_version.admin: Destruction complete after 0s
+random_password.admin: Creating...
+random_password.admin: Creation complete after 1s [id=none]
+google_secret_manager_secret_version.db: Destruction complete after 1s
+google_project_service.apis["sts.googleapis.com"]: Creating...
+google_project_service.apis["monitoring.googleapis.com"]: Creating...
+google_project_service.apis["logging.googleapis.com"]: Creating...
+google_project_service.apis["iamcredentials.googleapis.com"]: Creating...
+random_password.db: Creating...
+random_password.db: Creation complete after 0s [id=none]
+google_project_service.apis["monitoring.googleapis.com"]: Creation complete after 4s [id=project-8e56ba89-c5a4-43c4-aa6/monitoring.googleapis.com]
+google_project_service.apis["logging.googleapis.com"]: Creation complete after 4s [id=project-8e56ba89-c5a4-43c4-aa6/logging.googleapis.com]
+google_project_service.apis["iamcredentials.googleapis.com"]: Creation complete after 4s [id=project-8e56ba89-c5a4-43c4-aa6/iamcredentials.googleapis.com]
+google_service_account.ci["builder"]: Still creating... [00m10s elapsed]
+google_service_account.ci["terraform"]: Still creating... [00m10s elapsed]
+google_project_service.apis["sts.googleapis.com"]: Still creating... [00m10s elapsed]
+google_service_account.ci["builder"]: Creation complete after 12s [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_service_account.ci["terraform"]: Creation complete after 12s [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/cloudsql.admin"]: Creating...
+google_project_iam_member.terraform["roles/secretmanager.admin"]: Creating...
+google_project_iam_member.terraform["roles/cloudscheduler.admin"]: Creating...
+google_storage_bucket_iam_member.state: Creating...
+google_project_iam_member.terraform["roles/run.admin"]: Creating...
+google_project_iam_member.terraform["roles/monitoring.admin"]: Creating...
+google_project_iam_member.terraform["roles/compute.networkAdmin"]: Creating...
+google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"]: Creating...
+google_project_iam_member.terraform["roles/file.editor"]: Creating...
+google_storage_bucket_iam_member.state: Creation complete after 6s [id=b/project-8e56ba89-c5a4-43c4-aa6-tfstate/roles/storage.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/iam.serviceAccountUser"]: Creating...
+google_project_service.apis["sts.googleapis.com"]: Still creating... [00m20s elapsed]
+google_project_iam_member.terraform["roles/run.admin"]: Creation complete after 10s [id=project-8e56ba89-c5a4-43c4-aa6/roles/run.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/secretmanager.admin"]: Creation complete after 10s [id=project-8e56ba89-c5a4-43c4-aa6/roles/secretmanager.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/resourcemanager.projectIamAdmin"]: Creating...
+google_project_iam_member.terraform["roles/logging.configWriter"]: Creating...
+google_project_iam_member.terraform["roles/file.editor"]: Creation complete after 10s [id=project-8e56ba89-c5a4-43c4-aa6/roles/file.editor/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/serviceusage.serviceUsageAdmin"]: Creating...
+google_project_iam_member.terraform["roles/cloudsql.admin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/cloudscheduler.admin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/compute.networkAdmin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/monitoring.admin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/monitoring.admin"]: Creation complete after 11s [id=project-8e56ba89-c5a4-43c4-aa6/roles/monitoring.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/iam.workloadIdentityPoolAdmin"]: Creating...
+google_project_iam_member.terraform["roles/cloudscheduler.admin"]: Creation complete after 11s [id=project-8e56ba89-c5a4-43c4-aa6/roles/cloudscheduler.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/artifactregistry.admin"]: Creating...
+google_project_service.apis["sts.googleapis.com"]: Creation complete after 23s [id=project-8e56ba89-c5a4-43c4-aa6/sts.googleapis.com]
+google_monitoring_notification_channel.email: Creating...
+google_monitoring_notification_channel.email: Creation complete after 1s [id=projects/project-8e56ba89-c5a4-43c4-aa6/notificationChannels/3478178038128363060]
+google_monitoring_dashboard.moodle: Creating...
+google_monitoring_dashboard.moodle: Creation complete after 0s [id=projects/264423911779/dashboards/bb82fccf-0b6f-45f7-96ac-81c4c0e1c330]
+google_iam_workload_identity_pool.github: Creating...
+google_project_iam_member.terraform["roles/iam.serviceAccountUser"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"]: Creation complete after 17s [id=project-8e56ba89-c5a4-43c4-aa6/roles/iam.serviceAccountAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_artifact_registry_repository.moodle: Modifying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/repositories/moodle-sql-containers]
+google_project_iam_member.terraform["roles/compute.networkAdmin"]: Creation complete after 18s [id=project-8e56ba89-c5a4-43c4-aa6/roles/compute.networkAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_monitoring_uptime_check_config.moodle: Creating...
+google_project_iam_member.terraform["roles/cloudsql.admin"]: Creation complete after 18s [id=project-8e56ba89-c5a4-43c4-aa6/roles/cloudsql.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_secret_manager_secret.password["admin"]: Modifying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-admin-password]
+google_artifact_registry_repository.moodle: Modifications complete after 1s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/repositories/moodle-sql-containers]
+google_secret_manager_secret.password["db"]: Modifying... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-db-password]
+google_monitoring_uptime_check_config.moodle: Creation complete after 1s [id=projects/project-8e56ba89-c5a4-43c4-aa6/uptimeCheckConfigs/moodle-login-OTHv88G3aTQ]
+google_monitoring_alert_policy.sql_cpu: Creating...
+google_secret_manager_secret.password["admin"]: Modifications complete after 1s [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-admin-password]
+google_monitoring_alert_policy.errors_5xx: Creating...
+google_secret_manager_secret.password["db"]: Modifications complete after 2s [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-db-password]
+google_artifact_registry_repository_iam_member.builder: Creating...
+google_project_iam_member.terraform["roles/logging.configWriter"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/resourcemanager.projectIamAdmin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/serviceusage.serviceUsageAdmin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/iam.workloadIdentityPoolAdmin"]: Still creating... [00m10s elapsed]
+google_project_iam_member.terraform["roles/artifactregistry.admin"]: Still creating... [00m10s elapsed]
+google_monitoring_alert_policy.sql_cpu: Creation complete after 2s [id=projects/project-8e56ba89-c5a4-43c4-aa6/alertPolicies/15573896708951148349]
+google_monitoring_alert_policy.uptime: Creating...
+google_monitoring_alert_policy.errors_5xx: Creation complete after 4s [id=projects/project-8e56ba89-c5a4-43c4-aa6/alertPolicies/12159389124930356185]
+google_secret_manager_secret_version.admin: Creating...
+google_iam_workload_identity_pool.github: Still creating... [00m10s elapsed]
+google_iam_workload_identity_pool.github: Creation complete after 11s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/global/workloadIdentityPools/github-actions]
+google_secret_manager_secret_version.db: Creating...
+google_monitoring_alert_policy.uptime: Creation complete after 3s [id=projects/project-8e56ba89-c5a4-43c4-aa6/alertPolicies/3932374196610057995]
+module.database.google_sql_database_instance.moodle: Modifying... [id=moodle-sql-mysql]
+google_project_iam_member.terraform["roles/artifactregistry.admin"]: Creation complete after 14s [id=project-8e56ba89-c5a4-43c4-aa6/roles/artifactregistry.admin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.networking.google_filestore_instance.moodle: Creating...
+google_project_iam_member.terraform["roles/logging.configWriter"]: Creation complete after 15s [id=project-8e56ba89-c5a4-43c4-aa6/roles/logging.configWriter/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_iam_workload_identity_pool_provider.github: Creating...
+google_secret_manager_secret_version.admin: Creation complete after 2s [id=projects/264423911779/secrets/moodle-sql-admin-password/versions/4]
+google_service_account_iam_member.wif["terraform"]: Creating...
+google_project_iam_member.terraform["roles/iam.serviceAccountUser"]: Creation complete after 19s [id=project-8e56ba89-c5a4-43c4-aa6/roles/iam.serviceAccountUser/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_service_account_iam_member.wif["builder"]: Creating...
+google_project_iam_member.terraform["roles/serviceusage.serviceUsageAdmin"]: Creation complete after 16s [id=project-8e56ba89-c5a4-43c4-aa6/roles/serviceusage.serviceUsageAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/resourcemanager.projectIamAdmin"]: Creation complete after 16s [id=project-8e56ba89-c5a4-43c4-aa6/roles/resourcemanager.projectIamAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_artifact_registry_repository_iam_member.builder: Creation complete after 7s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/repositories/moodle-sql-containers/roles/artifactregistry.writer/serviceAccount:gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_project_iam_member.terraform["roles/iam.workloadIdentityPoolAdmin"]: Creation complete after 16s [id=project-8e56ba89-c5a4-43c4-aa6/roles/iam.workloadIdentityPoolAdmin/serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_secret_manager_secret_version.db: Creation complete after 3s [id=projects/264423911779/secrets/moodle-sql-db-password/versions/2]
+google_service_account_iam_member.wif["terraform"]: Creation complete after 6s [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com/roles/iam.workloadIdentityUser/principalSet://iam.googleapis.com/projects/264423911779/locations/global/workloadIdentityPools/github-actions/attribute.repository/Casper128/moodle]
+google_service_account_iam_member.wif["builder"]: Creation complete after 6s [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com/roles/iam.workloadIdentityUser/principalSet://iam.googleapis.com/projects/264423911779/locations/global/workloadIdentityPools/github-actions/attribute.repository/Casper128/moodle]
+module.database.google_sql_database_instance.moodle: Still modifying... [id=moodle-sql-mysql, 00m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [00m10s elapsed]
+google_iam_workload_identity_pool_provider.github: Still creating... [00m10s elapsed]
+google_iam_workload_identity_pool_provider.github: Creation complete after 11s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/global/workloadIdentityPools/github-actions/providers/github]
+module.database.google_sql_database_instance.moodle: Still modifying... [id=moodle-sql-mysql, 00m20s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [00m20s elapsed]
+module.database.google_sql_database_instance.moodle: Still modifying... [id=moodle-sql-mysql, 00m30s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [00m30s elapsed]
+module.database.google_sql_database_instance.moodle: Still modifying... [id=moodle-sql-mysql, 00m40s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [00m40s elapsed]
+module.database.google_sql_database_instance.moodle: Modifications complete after 44s [id=moodle-sql-mysql]
+module.database.google_sql_database.moodle: Creating...
+module.database.google_sql_user.moodle: Modifying... [id=moodleuser/%/moodle-sql-mysql]
+module.database.google_sql_database.moodle: Creation complete after 1s [id=projects/project-8e56ba89-c5a4-43c4-aa6/instances/moodle-sql-mysql/databases/moodle]
+module.database.google_sql_user.moodle: Modifications complete after 4s [id=moodleuser/%/moodle-sql-mysql]
+module.cloudrun.google_service_account.scheduler: Creating...
+module.networking.google_filestore_instance.moodle: Still creating... [00m50s elapsed]
+module.cloudrun.google_service_account.scheduler: Still creating... [00m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [01m00s elapsed]
+module.cloudrun.google_service_account.scheduler: Creation complete after 20s [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.networking.google_filestore_instance.moodle: Still creating... [01m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [01m20s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [01m30s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [01m40s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [01m50s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [02m00s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [02m10s elapsed]
+module.networking.google_filestore_instance.moodle: Still creating... [02m20s elapsed]
+module.networking.google_filestore_instance.moodle: Creation complete after 2m27s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1-a/instances/moodle-sql-files]
+module.cloudrun.google_cloud_run_v2_job.task["cron"]: Creating...
+module.cloudrun.google_cloud_run_v2_job.task["install"]: Creating...
+module.cloudrun.google_cloud_run_v2_service.web: Creating...
+module.cloudrun.google_cloud_run_v2_job.task["install"]: Creation complete after 2s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-install]
+module.cloudrun.google_cloud_run_v2_job.task["cron"]: Creation complete after 2s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron]
+module.cloudrun.google_cloud_run_v2_job_iam_member.scheduler: Creating...
+module.cloudrun.google_cloud_run_v2_job_iam_member.scheduler: Creation complete after 5s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron/roles/run.invoker/serviceAccount:moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.cloudrun.google_cloud_scheduler_job.cron: Creating...
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [00m10s elapsed]
+module.cloudrun.google_cloud_scheduler_job.cron: Creation complete after 10s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [00m20s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [00m30s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [00m40s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [00m50s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [01m00s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [01m10s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [01m20s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Still creating... [01m30s elapsed]
+module.cloudrun.google_cloud_run_v2_service.web: Creation complete after 1m36s [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/services/moodle-sql-web]
+
+Error: Error creating Metric: googleapi: Error 400: Field not found: 'label'.
+
+  with google_logging_metric.php_errors,
+  on monitoring.tf line 105, in resource "google_logging_metric" "php_errors":
+ 105: resource "google_logging_metric" "php_errors" {
+

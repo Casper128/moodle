@@ -1,0 +1,1528 @@
+Acquiring state lock. This may take a few moments...
+data.google_project.current: Reading...
+google_project_service.apis["cloudresourcemanager.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/cloudresourcemanager.googleapis.com]
+google_project_service.apis["secretmanager.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/secretmanager.googleapis.com]
+google_project_service.apis["artifactregistry.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/artifactregistry.googleapis.com]
+google_project_service.apis["cloudscheduler.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/cloudscheduler.googleapis.com]
+google_project_service.apis["run.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/run.googleapis.com]
+google_project_service.apis["file.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/file.googleapis.com]
+google_project_service.apis["compute.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/compute.googleapis.com]
+google_project_service.apis["iam.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/iam.googleapis.com]
+google_project_service.apis["sqladmin.googleapis.com"]: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/sqladmin.googleapis.com]
+data.google_project.current: Read complete after 2s [id=projects/project-8e56ba89-c5a4-43c4-aa6]
+google_service_account.runtime: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_artifact_registry_repository.moodle: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/repositories/moodle-sql-containers]
+google_secret_manager_secret.password["admin"]: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-admin-password]
+module.networking.google_compute_network.moodle: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/global/networks/moodle-sql-managed]
+google_secret_manager_secret.password["db"]: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-db-password]
+module.database.google_sql_database_instance.moodle: Refreshing state... [id=moodle-sql-mysql]
+google_project_iam_member.sql: Refreshing state... [id=project-8e56ba89-c5a4-43c4-aa6/roles/cloudsql.client/serviceAccount:moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.networking.google_compute_subnetwork.moodle: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/regions/us-central1/subnetworks/moodle-sql-run]
+google_secret_manager_secret_version.db: Refreshing state... [id=projects/264423911779/secrets/moodle-sql-db-password/versions/1]
+google_secret_manager_secret_iam_member.runtime["admin"]: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-admin-password/roles/secretmanager.secretAccessor/serviceAccount:moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+google_secret_manager_secret_version.admin: Refreshing state... [id=projects/264423911779/secrets/moodle-sql-admin-password/versions/3]
+google_secret_manager_secret_iam_member.runtime["db"]: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-db-password/roles/secretmanager.secretAccessor/serviceAccount:moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.database.google_sql_user.moodle: Refreshing state... [id=moodleuser/%/moodle-sql-mysql]
+module.networking.google_filestore_instance.moodle: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1-a/instances/moodle-sql-files]
+module.cloudrun.google_service_account.scheduler: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com]
+module.cloudrun.google_cloud_run_v2_job.task["install"]: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-install]
+module.cloudrun.google_cloud_run_v2_job.task["cron"]: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron]
+module.cloudrun.google_cloud_run_v2_service.web: Refreshing state... [id=projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/services/moodle-sql-web]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply" which may have affected this plan:
+
+  # module.cloudrun.google_cloud_run_v2_job.task["cron"] has been deleted
+  - resource "google_cloud_run_v2_job" "task" {
+        id                       = "projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron"
+      - name                     = "moodle-sql-cron" -> null
+        # (29 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.cloudrun.google_cloud_run_v2_service.web has been deleted
+  - resource "google_cloud_run_v2_service" "web" {
+        id                      = "projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/services/moodle-sql-web"
+        name                    = "moodle-sql-web"
+        # (36 unchanged attributes hidden)
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # module.cloudrun.google_service_account.scheduler has been deleted
+  - resource "google_service_account" "scheduler" {
+      - email           = "moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com" -> null
+        id              = "projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+        name            = "projects/project-8e56ba89-c5a4-43c4-aa6/serviceAccounts/moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+        # (8 unchanged attributes hidden)
+    }
+
+  # module.networking.google_filestore_instance.moodle has been deleted
+  - resource "google_filestore_instance" "moodle" {
+        id                          = "projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1-a/instances/moodle-sql-files"
+        name                        = "moodle-sql-files"
+        # (16 unchanged attributes hidden)
+
+      - networks {
+          - ip_addresses      = [
+              - "10.139.41.74",
+            ] -> null
+            # (4 unchanged attributes hidden)
+        }
+
+        # (1 unchanged block hidden)
+    }
+
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # google_artifact_registry_repository.moodle will be updated in-place
+  ~ resource "google_artifact_registry_repository" "moodle" {
+      + description            = "Imágenes de Moodle construidas desde el fork en GitHub"
+      ~ effective_labels       = {
+          + "app"                        = "moodle"
+          + "managed-by"                 = "terraform"
+            # (1 unchanged element hidden)
+        }
+        id                     = "projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/repositories/moodle-sql-containers"
+        name                   = "moodle-sql-containers"
+      ~ terraform_labels       = {
+          + "app"                        = "moodle"
+          + "managed-by"                 = "terraform"
+            # (1 unchanged element hidden)
+        }
+        # (12 unchanged attributes hidden)
+
+      + cleanup_policies {
+          + action = "DELETE"
+          + id     = "delete-untagged"
+
+          + condition {
+              + older_than            = "604800s"
+              + package_name_prefixes = []
+              + tag_prefixes          = []
+              + tag_state             = "UNTAGGED"
+              + version_name_prefixes = []
+                # (1 unchanged attribute hidden)
+            }
+        }
+      + cleanup_policies {
+          + action = "KEEP"
+          + id     = "keep-recent"
+
+          + most_recent_versions {
+              + keep_count            = 10
+              + package_name_prefixes = []
+            }
+        }
+
+        # (1 unchanged block hidden)
+    }
+
+  # google_artifact_registry_repository_iam_member.builder will be created
+  + resource "google_artifact_registry_repository_iam_member" "builder" {
+      + etag       = (known after apply)
+      + id         = (known after apply)
+      + location   = "us-central1"
+      + member     = "serviceAccount:gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project    = (known after apply)
+      + repository = "moodle-sql-containers"
+      + role       = "roles/artifactregistry.writer"
+    }
+
+  # google_iam_workload_identity_pool.github will be created
+  + resource "google_iam_workload_identity_pool" "github" {
+      + deletion_policy           = "DELETE"
+      + display_name              = "GitHub Actions"
+      + id                        = (known after apply)
+      + mode                      = (known after apply)
+      + name                      = (known after apply)
+      + project                   = "project-8e56ba89-c5a4-43c4-aa6"
+      + state                     = (known after apply)
+      + workload_identity_pool_id = "github-actions"
+    }
+
+  # google_iam_workload_identity_pool_provider.github will be created
+  + resource "google_iam_workload_identity_pool_provider" "github" {
+      + attribute_condition                = "assertion.repository == \"Casper128/moodle\""
+      + attribute_mapping                  = {
+          + "attribute.ref"        = "assertion.ref"
+          + "attribute.repository" = "assertion.repository"
+          + "google.subject"       = "assertion.sub"
+        }
+      + deletion_policy                    = "DELETE"
+      + display_name                       = "GitHub OIDC"
+      + id                                 = (known after apply)
+      + name                               = (known after apply)
+      + project                            = "project-8e56ba89-c5a4-43c4-aa6"
+      + state                              = (known after apply)
+      + workload_identity_pool_id          = "github-actions"
+      + workload_identity_pool_provider_id = "github"
+
+      + oidc {
+          + issuer_uri = "https://token.actions.githubusercontent.com"
+        }
+    }
+
+  # google_logging_metric.php_errors will be created
+  + resource "google_logging_metric" "php_errors" {
+      + deletion_policy = "DELETE"
+      + filter          = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"moodle-sql-web\" AND textPayload=~\"PHP (Fatal error|Warning|Parse error)\""
+      + id              = (known after apply)
+      + name            = "moodle_php_errors"
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+
+      + metric_descriptor {
+          + metric_kind = "DELTA"
+          + unit        = "1"
+          + value_type  = "INT64"
+        }
+    }
+
+  # google_monitoring_alert_policy.errors_5xx will be created
+  + resource "google_monitoring_alert_policy" "errors_5xx" {
+      + combiner              = "OR"
+      + creation_record       = (known after apply)
+      + deletion_policy       = "DELETE"
+      + display_name          = "Moodle errores HTTP 5xx"
+      + enabled               = true
+      + id                    = (known after apply)
+      + name                  = (known after apply)
+      + notification_channels = (known after apply)
+      + project               = "project-8e56ba89-c5a4-43c4-aa6"
+
+      + alert_strategy {
+          + auto_close = "1800s"
+        }
+
+      + conditions {
+          + display_name = "Más de 5 respuestas 5xx en 5 minutos"
+          + name         = (known after apply)
+
+          + condition_threshold {
+              + comparison      = "COMPARISON_GT"
+              + duration        = "0s"
+              + filter          = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"moodle-sql-web\" AND metric.type=\"run.googleapis.com/request_count\" AND metric.label.response_code_class=\"5xx\""
+              + threshold_value = 5
+
+              + aggregations {
+                  + alignment_period     = "300s"
+                  + cross_series_reducer = "REDUCE_SUM"
+                  + per_series_aligner   = "ALIGN_DELTA"
+                }
+
+              + trigger {
+                  + count = 1
+                }
+            }
+        }
+    }
+
+  # google_monitoring_alert_policy.sql_cpu will be created
+  + resource "google_monitoring_alert_policy" "sql_cpu" {
+      + combiner              = "OR"
+      + creation_record       = (known after apply)
+      + deletion_policy       = "DELETE"
+      + display_name          = "Cloud SQL CPU alta"
+      + enabled               = true
+      + id                    = (known after apply)
+      + name                  = (known after apply)
+      + notification_channels = (known after apply)
+      + project               = "project-8e56ba89-c5a4-43c4-aa6"
+
+      + conditions {
+          + display_name = "CPU de MySQL > 80% durante 10 minutos"
+          + name         = (known after apply)
+
+          + condition_threshold {
+              + comparison      = "COMPARISON_GT"
+              + duration        = "600s"
+              + filter          = "resource.type=\"cloudsql_database\" AND resource.label.database_id=\"project-8e56ba89-c5a4-43c4-aa6:moodle-sql-mysql\" AND metric.type=\"cloudsql.googleapis.com/database/cpu/utilization\""
+              + threshold_value = 0.8
+
+              + aggregations {
+                  + alignment_period   = "300s"
+                  + per_series_aligner = "ALIGN_MEAN"
+                }
+
+              + trigger {
+                  + count = 1
+                }
+            }
+        }
+    }
+
+  # google_monitoring_alert_policy.uptime will be created
+  + resource "google_monitoring_alert_policy" "uptime" {
+      + combiner              = "OR"
+      + creation_record       = (known after apply)
+      + deletion_policy       = "DELETE"
+      + display_name          = "Moodle no disponible"
+      + enabled               = true
+      + id                    = (known after apply)
+      + name                  = (known after apply)
+      + notification_channels = (known after apply)
+      + project               = "project-8e56ba89-c5a4-43c4-aa6"
+
+      + conditions {
+          + display_name = "Uptime check fallido"
+          + name         = (known after apply)
+
+          + condition_threshold {
+              + comparison      = "COMPARISON_GT"
+              + duration        = "600s"
+              + filter          = (known after apply)
+              + threshold_value = 1
+
+              + aggregations {
+                  + alignment_period     = "1200s"
+                  + cross_series_reducer = "REDUCE_COUNT_FALSE"
+                  + group_by_fields      = [
+                      + "resource.label.*",
+                    ]
+                  + per_series_aligner   = "ALIGN_NEXT_OLDER"
+                }
+
+              + trigger {
+                  + count = 1
+                }
+            }
+        }
+
+      + documentation {
+          + content   = "La página de acceso de Moodle no responde desde al menos dos regiones. Revisa Cloud Run y Cloud SQL."
+          + mime_type = "text/markdown"
+        }
+    }
+
+  # google_monitoring_dashboard.moodle will be created
+  + resource "google_monitoring_dashboard" "moodle" {
+      + dashboard_json  = jsonencode(
+            {
+              + displayName  = "Moodle en GCP"
+              + mosaicLayout = {
+                  + columns = 12
+                  + tiles   = [
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "Solicitudes por clase de respuesta"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_SUM"
+                                                      + groupByFields      = [
+                                                          + "metric.label.response_code_class",
+                                                        ]
+                                                      + perSeriesAligner   = "ALIGN_RATE"
+                                                    }
+                                                  + filter      = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"moodle-sql-web\" AND metric.type=\"run.googleapis.com/request_count\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 0
+                          + yPos   = 0
+                        },
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "Latencia p95 (ms)"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_MAX"
+                                                      + groupByFields      = []
+                                                      + perSeriesAligner   = "ALIGN_PERCENTILE_95"
+                                                    }
+                                                  + filter      = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"moodle-sql-web\" AND metric.type=\"run.googleapis.com/request_latencies\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 6
+                          + yPos   = 0
+                        },
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "CPU del contenedor"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_MAX"
+                                                      + groupByFields      = []
+                                                      + perSeriesAligner   = "ALIGN_PERCENTILE_95"
+                                                    }
+                                                  + filter      = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"moodle-sql-web\" AND metric.type=\"run.googleapis.com/container/cpu/utilizations\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 0
+                          + yPos   = 4
+                        },
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "Memoria del contenedor"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_MAX"
+                                                      + groupByFields      = []
+                                                      + perSeriesAligner   = "ALIGN_PERCENTILE_95"
+                                                    }
+                                                  + filter      = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"moodle-sql-web\" AND metric.type=\"run.googleapis.com/container/memory/utilizations\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 6
+                          + yPos   = 4
+                        },
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "Instancias de Cloud Run"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_SUM"
+                                                      + groupByFields      = [
+                                                          + "metric.label.state",
+                                                        ]
+                                                      + perSeriesAligner   = "ALIGN_MAX"
+                                                    }
+                                                  + filter      = "resource.type=\"cloud_run_revision\" AND resource.label.service_name=\"moodle-sql-web\" AND metric.type=\"run.googleapis.com/container/instance_count\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 0
+                          + yPos   = 8
+                        },
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "Cloud SQL - CPU"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_MEAN"
+                                                      + groupByFields      = []
+                                                      + perSeriesAligner   = "ALIGN_MEAN"
+                                                    }
+                                                  + filter      = "resource.type=\"cloudsql_database\" AND resource.label.database_id=\"project-8e56ba89-c5a4-43c4-aa6:moodle-sql-mysql\" AND metric.type=\"cloudsql.googleapis.com/database/cpu/utilization\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 6
+                          + yPos   = 8
+                        },
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "Cloud SQL - conexiones"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_SUM"
+                                                      + groupByFields      = []
+                                                      + perSeriesAligner   = "ALIGN_MEAN"
+                                                    }
+                                                  + filter      = "resource.type=\"cloudsql_database\" AND resource.label.database_id=\"project-8e56ba89-c5a4-43c4-aa6:moodle-sql-mysql\" AND metric.type=\"cloudsql.googleapis.com/database/network/connections\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 0
+                          + yPos   = 12
+                        },
+                      + {
+                          + height = 4
+                          + widget = {
+                              + title   = "Uptime check superado"
+                              + xyChart = {
+                                  + dataSets = [
+                                      + {
+                                          + plotType        = "LINE"
+                                          + timeSeriesQuery = {
+                                              + timeSeriesFilter = {
+                                                  + aggregation = {
+                                                      + alignmentPeriod    = "60s"
+                                                      + crossSeriesReducer = "REDUCE_MEAN"
+                                                      + groupByFields      = []
+                                                      + perSeriesAligner   = "ALIGN_FRACTION_TRUE"
+                                                    }
+                                                  + filter      = "metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\" AND resource.type=\"uptime_url\""
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            }
+                          + width  = 6
+                          + xPos   = 6
+                          + yPos   = 12
+                        },
+                    ]
+                }
+            }
+        )
+      + deletion_policy = "DELETE"
+      + id              = (known after apply)
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+    }
+
+  # google_monitoring_notification_channel.email will be created
+  + resource "google_monitoring_notification_channel" "email" {
+      + deletion_policy     = "DELETE"
+      + display_name        = "Moodle - correo de alertas"
+      + enabled             = true
+      + force_delete        = false
+      + id                  = (known after apply)
+      + labels              = {
+          + "email_address" = (sensitive value)
+        }
+      + name                = (known after apply)
+      + project             = "project-8e56ba89-c5a4-43c4-aa6"
+      + type                = "email"
+      + verification_status = (known after apply)
+    }
+
+  # google_monitoring_uptime_check_config.moodle will be created
+  + resource "google_monitoring_uptime_check_config" "moodle" {
+      + checker_type    = (known after apply)
+      + deletion_policy = "DELETE"
+      + display_name    = "Moodle login"
+      + id              = (known after apply)
+      + name            = (known after apply)
+      + period          = "300s"
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+      + timeout         = "10s"
+      + uptime_check_id = (known after apply)
+
+      + http_check {
+          + headers        = (known after apply)
+          + path           = "/login/index.php"
+          + port           = 443
+          + request_method = "GET"
+          + use_ssl        = true
+          + validate_ssl   = true
+
+          + accepted_response_status_codes {
+              + status_class = "STATUS_CLASS_2XX"
+            }
+        }
+
+      + monitored_resource {
+          + labels = {
+              + "host"       = "moodle-sql-web-264423911779.us-central1.run.app"
+              + "project_id" = "project-8e56ba89-c5a4-43c4-aa6"
+            }
+          + type   = "uptime_url"
+        }
+    }
+
+  # google_project_iam_member.terraform["roles/artifactregistry.admin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/artifactregistry.admin"
+    }
+
+  # google_project_iam_member.terraform["roles/cloudscheduler.admin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/cloudscheduler.admin"
+    }
+
+  # google_project_iam_member.terraform["roles/cloudsql.admin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/cloudsql.admin"
+    }
+
+  # google_project_iam_member.terraform["roles/compute.networkAdmin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/compute.networkAdmin"
+    }
+
+  # google_project_iam_member.terraform["roles/file.editor"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/file.editor"
+    }
+
+  # google_project_iam_member.terraform["roles/iam.serviceAccountAdmin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/iam.serviceAccountAdmin"
+    }
+
+  # google_project_iam_member.terraform["roles/iam.serviceAccountUser"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/iam.serviceAccountUser"
+    }
+
+  # google_project_iam_member.terraform["roles/iam.workloadIdentityPoolAdmin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/iam.workloadIdentityPoolAdmin"
+    }
+
+  # google_project_iam_member.terraform["roles/logging.configWriter"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/logging.configWriter"
+    }
+
+  # google_project_iam_member.terraform["roles/monitoring.admin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/monitoring.admin"
+    }
+
+  # google_project_iam_member.terraform["roles/resourcemanager.projectIamAdmin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/resourcemanager.projectIamAdmin"
+    }
+
+  # google_project_iam_member.terraform["roles/run.admin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/run.admin"
+    }
+
+  # google_project_iam_member.terraform["roles/secretmanager.admin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/secretmanager.admin"
+    }
+
+  # google_project_iam_member.terraform["roles/serviceusage.serviceUsageAdmin"] will be created
+  + resource "google_project_iam_member" "terraform" {
+      + etag    = (known after apply)
+      + id      = (known after apply)
+      + member  = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + project = "project-8e56ba89-c5a4-43c4-aa6"
+      + role    = "roles/serviceusage.serviceUsageAdmin"
+    }
+
+  # google_project_service.apis["iamcredentials.googleapis.com"] will be created
+  + resource "google_project_service" "apis" {
+      + deletion_policy    = "DELETE"
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "project-8e56ba89-c5a4-43c4-aa6"
+      + service            = "iamcredentials.googleapis.com"
+    }
+
+  # google_project_service.apis["logging.googleapis.com"] will be created
+  + resource "google_project_service" "apis" {
+      + deletion_policy    = "DELETE"
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "project-8e56ba89-c5a4-43c4-aa6"
+      + service            = "logging.googleapis.com"
+    }
+
+  # google_project_service.apis["monitoring.googleapis.com"] will be created
+  + resource "google_project_service" "apis" {
+      + deletion_policy    = "DELETE"
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "project-8e56ba89-c5a4-43c4-aa6"
+      + service            = "monitoring.googleapis.com"
+    }
+
+  # google_project_service.apis["sts.googleapis.com"] will be created
+  + resource "google_project_service" "apis" {
+      + deletion_policy    = "DELETE"
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "project-8e56ba89-c5a4-43c4-aa6"
+      + service            = "sts.googleapis.com"
+    }
+
+  # google_secret_manager_secret.password["admin"] will be updated in-place
+  ~ resource "google_secret_manager_secret" "password" {
+      ~ effective_labels      = {
+          + "app"                        = "moodle"
+          + "managed-by"                 = "terraform"
+            # (1 unchanged element hidden)
+        }
+        id                    = "projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-admin-password"
+        name                  = "projects/264423911779/secrets/moodle-sql-admin-password"
+      ~ terraform_labels      = {
+          + "app"                        = "moodle"
+          + "managed-by"                 = "terraform"
+            # (1 unchanged element hidden)
+        }
+        # (11 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # google_secret_manager_secret.password["db"] will be updated in-place
+  ~ resource "google_secret_manager_secret" "password" {
+      ~ effective_labels      = {
+          + "app"                        = "moodle"
+          + "managed-by"                 = "terraform"
+            # (1 unchanged element hidden)
+        }
+        id                    = "projects/project-8e56ba89-c5a4-43c4-aa6/secrets/moodle-sql-db-password"
+        name                  = "projects/264423911779/secrets/moodle-sql-db-password"
+      ~ terraform_labels      = {
+          + "app"                        = "moodle"
+          + "managed-by"                 = "terraform"
+            # (1 unchanged element hidden)
+        }
+        # (11 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # google_secret_manager_secret_version.admin must be replaced
+-/+ resource "google_secret_manager_secret_version" "admin" {
+      ~ create_time            = "2026-11-04T02:45:58.744122Z" -> (known after apply)
+      ~ deletion_policy        = "DELETE" -> (known after apply)
+      + destroy_time           = (known after apply)
+      ~ id                     = "projects/264423911779/secrets/moodle-sql-admin-password/versions/3" -> (known after apply)
+      - is_secret_data_base64  = false -> null
+      ~ name                   = "projects/264423911779/secrets/moodle-sql-admin-password/versions/3" -> (known after apply)
+      + project                = (known after apply)
+      ~ secret_data            = (sensitive value) # forces replacement
+      ~ version                = "3" -> (known after apply)
+        # (4 unchanged attributes hidden)
+    }
+
+  # google_secret_manager_secret_version.db must be replaced
+-/+ resource "google_secret_manager_secret_version" "db" {
+      ~ create_time            = "2026-11-04T02:26:52.397861Z" -> (known after apply)
+      ~ deletion_policy        = "DELETE" -> (known after apply)
+      + destroy_time           = (known after apply)
+      ~ id                     = "projects/264423911779/secrets/moodle-sql-db-password/versions/1" -> (known after apply)
+      - is_secret_data_base64  = false -> null
+      ~ name                   = "projects/264423911779/secrets/moodle-sql-db-password/versions/1" -> (known after apply)
+      + project                = (known after apply)
+      ~ secret_data            = (sensitive value) # forces replacement
+      ~ version                = "1" -> (known after apply)
+        # (4 unchanged attributes hidden)
+    }
+
+  # google_service_account.ci["builder"] will be created
+  + resource "google_service_account" "ci" {
+      + account_id      = "gh-builder"
+      + deletion_policy = "DELETE"
+      + disabled        = false
+      + display_name    = "GitHub Actions (builder)"
+      + email           = "gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + id              = (known after apply)
+      + member          = "serviceAccount:gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + name            = (known after apply)
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+      + unique_id       = (known after apply)
+    }
+
+  # google_service_account.ci["terraform"] will be created
+  + resource "google_service_account" "ci" {
+      + account_id      = "gh-terraform"
+      + deletion_policy = "DELETE"
+      + disabled        = false
+      + display_name    = "GitHub Actions (terraform)"
+      + email           = "gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + id              = (known after apply)
+      + member          = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + name            = (known after apply)
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+      + unique_id       = (known after apply)
+    }
+
+  # google_service_account_iam_member.wif["builder"] will be created
+  + resource "google_service_account_iam_member" "wif" {
+      + etag               = (known after apply)
+      + id                 = (known after apply)
+      + member             = (known after apply)
+      + role               = "roles/iam.workloadIdentityUser"
+      + service_account_id = (known after apply)
+    }
+
+  # google_service_account_iam_member.wif["terraform"] will be created
+  + resource "google_service_account_iam_member" "wif" {
+      + etag               = (known after apply)
+      + id                 = (known after apply)
+      + member             = (known after apply)
+      + role               = "roles/iam.workloadIdentityUser"
+      + service_account_id = (known after apply)
+    }
+
+  # google_storage_bucket_iam_member.state will be created
+  + resource "google_storage_bucket_iam_member" "state" {
+      + bucket = "project-8e56ba89-c5a4-43c4-aa6-tfstate"
+      + etag   = (known after apply)
+      + id     = (known after apply)
+      + member = "serviceAccount:gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + role   = "roles/storage.admin"
+    }
+
+  # random_password.admin will be created
+  + resource "random_password" "admin" {
+      + bcrypt_hash      = (sensitive value)
+      + id               = (known after apply)
+      + length           = 20
+      + lower            = true
+      + min_lower        = 2
+      + min_numeric      = 2
+      + min_special      = 2
+      + min_upper        = 2
+      + number           = true
+      + numeric          = true
+      + override_special = "!#%*-_"
+      + result           = (sensitive value)
+      + special          = true
+      + upper            = true
+    }
+
+  # random_password.db will be created
+  + resource "random_password" "db" {
+      + bcrypt_hash = (sensitive value)
+      + id          = (known after apply)
+      + length      = 24
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (sensitive value)
+      + special     = false
+      + upper       = true
+    }
+
+  # module.cloudrun.google_cloud_run_v2_job.task["cron"] will be created
+  + resource "google_cloud_run_v2_job" "task" {
+      + conditions               = (known after apply)
+      + create_time              = (known after apply)
+      + creator                  = (known after apply)
+      + delete_time              = (known after apply)
+      + deletion_policy          = "DELETE"
+      + deletion_protection      = false
+      + effective_annotations    = (known after apply)
+      + effective_labels         = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + etag                     = (known after apply)
+      + execution_count          = (known after apply)
+      + expire_time              = (known after apply)
+      + generation               = (known after apply)
+      + id                       = (known after apply)
+      + labels                   = {
+          + "app"        = "moodle"
+          + "managed-by" = "terraform"
+        }
+      + last_modifier            = (known after apply)
+      + latest_created_execution = (known after apply)
+      + launch_stage             = (known after apply)
+      + location                 = "us-central1"
+      + name                     = "moodle-sql-cron"
+      + observed_generation      = (known after apply)
+      + project                  = "project-8e56ba89-c5a4-43c4-aa6"
+      + reconciling              = (known after apply)
+      + terminal_condition       = (known after apply)
+      + terraform_labels         = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + uid                      = (known after apply)
+      + update_time              = (known after apply)
+
+      + template {
+          + parallelism = 1
+          + task_count  = 1
+
+          + template {
+              + execution_environment = "EXECUTION_ENVIRONMENT_GEN2"
+              + max_retries           = 0
+              + service_account       = "moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+              + timeout               = "3600s"
+
+              + containers {
+                  + args  = [
+                      + "cron",
+                    ]
+                  + image = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a"
+
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+
+                  + resources {
+                      + limits = {
+                          + "cpu"    = "1"
+                          + "memory" = "1Gi"
+                        }
+                    }
+
+                  + startup_probe (known after apply)
+
+                  + volume_mounts {
+                      + mount_path = "/mnt/moodle"
+                      + name       = "data"
+                    }
+                  + volume_mounts {
+                      + mount_path = "/cloudsql"
+                      + name       = "cloudsql"
+                    }
+                }
+
+              + volumes {
+                  + name = "data"
+
+                  + nfs {
+                      + path   = "/moodle"
+                      + server = (known after apply)
+                    }
+                }
+              + volumes {
+                  + name = "cloudsql"
+
+                  + cloud_sql_instance {
+                      + instances = [
+                          + "project-8e56ba89-c5a4-43c4-aa6:us-central1:moodle-sql-mysql",
+                        ]
+                    }
+                }
+
+              + vpc_access {
+                  + egress = "PRIVATE_RANGES_ONLY"
+
+                  + network_interfaces {
+                      + network    = "moodle-sql-managed"
+                      + subnetwork = "moodle-sql-run"
+                    }
+                }
+            }
+        }
+    }
+
+  # module.cloudrun.google_cloud_run_v2_job.task["install"] will be created
+  + resource "google_cloud_run_v2_job" "task" {
+      + conditions               = (known after apply)
+      + create_time              = (known after apply)
+      + creator                  = (known after apply)
+      + delete_time              = (known after apply)
+      + deletion_policy          = "DELETE"
+      + deletion_protection      = false
+      + effective_annotations    = (known after apply)
+      + effective_labels         = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + etag                     = (known after apply)
+      + execution_count          = (known after apply)
+      + expire_time              = (known after apply)
+      + generation               = (known after apply)
+      + id                       = (known after apply)
+      + labels                   = {
+          + "app"        = "moodle"
+          + "managed-by" = "terraform"
+        }
+      + last_modifier            = (known after apply)
+      + latest_created_execution = (known after apply)
+      + launch_stage             = (known after apply)
+      + location                 = "us-central1"
+      + name                     = "moodle-sql-install"
+      + observed_generation      = (known after apply)
+      + project                  = "project-8e56ba89-c5a4-43c4-aa6"
+      + reconciling              = (known after apply)
+      + terminal_condition       = (known after apply)
+      + terraform_labels         = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + uid                      = (known after apply)
+      + update_time              = (known after apply)
+
+      + template {
+          + parallelism = 1
+          + task_count  = 1
+
+          + template {
+              + execution_environment = "EXECUTION_ENVIRONMENT_GEN2"
+              + max_retries           = 0
+              + service_account       = "moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+              + timeout               = "3600s"
+
+              + containers {
+                  + args  = [
+                      + "install",
+                    ]
+                  + image = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a"
+
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+                  + env {
+                      # At least one attribute in this block is (or was) sensitive,
+                      # so its contents will not be displayed.
+                    }
+
+                  + resources {
+                      + limits = {
+                          + "cpu"    = "1"
+                          + "memory" = "1Gi"
+                        }
+                    }
+
+                  + startup_probe (known after apply)
+
+                  + volume_mounts {
+                      + mount_path = "/mnt/moodle"
+                      + name       = "data"
+                    }
+                  + volume_mounts {
+                      + mount_path = "/cloudsql"
+                      + name       = "cloudsql"
+                    }
+                }
+
+              + volumes {
+                  + name = "data"
+
+                  + nfs {
+                      + path   = "/moodle"
+                      + server = (known after apply)
+                    }
+                }
+              + volumes {
+                  + name = "cloudsql"
+
+                  + cloud_sql_instance {
+                      + instances = [
+                          + "project-8e56ba89-c5a4-43c4-aa6:us-central1:moodle-sql-mysql",
+                        ]
+                    }
+                }
+
+              + vpc_access {
+                  + egress = "PRIVATE_RANGES_ONLY"
+
+                  + network_interfaces {
+                      + network    = "moodle-sql-managed"
+                      + subnetwork = "moodle-sql-run"
+                    }
+                }
+            }
+        }
+    }
+
+  # module.cloudrun.google_cloud_run_v2_job_iam_member.scheduler will be created
+  + resource "google_cloud_run_v2_job_iam_member" "scheduler" {
+      + etag     = (known after apply)
+      + id       = (known after apply)
+      + location = "us-central1"
+      + member   = "serviceAccount:moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + name     = "moodle-sql-cron"
+      + project  = (known after apply)
+      + role     = "roles/run.invoker"
+    }
+
+  # module.cloudrun.google_cloud_run_v2_service.web will be created
+  + resource "google_cloud_run_v2_service" "web" {
+      + conditions              = (known after apply)
+      + create_time             = (known after apply)
+      + creator                 = (known after apply)
+      + delete_time             = (known after apply)
+      + deletion_policy         = "DELETE"
+      + deletion_protection     = false
+      + effective_annotations   = (known after apply)
+      + effective_labels        = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + etag                    = (known after apply)
+      + expire_time             = (known after apply)
+      + generation              = (known after apply)
+      + id                      = (known after apply)
+      + ingress                 = "INGRESS_TRAFFIC_ALL"
+      + labels                  = {
+          + "app"        = "moodle"
+          + "managed-by" = "terraform"
+        }
+      + last_modifier           = (known after apply)
+      + latest_created_revision = (known after apply)
+      + latest_ready_revision   = (known after apply)
+      + launch_stage            = (known after apply)
+      + location                = "us-central1"
+      + name                    = "moodle-sql-web"
+      + observed_generation     = (known after apply)
+      + project                 = "project-8e56ba89-c5a4-43c4-aa6"
+      + reconciling             = (known after apply)
+      + terminal_condition      = (known after apply)
+      + terraform_labels        = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + traffic_statuses        = (known after apply)
+      + uid                     = (known after apply)
+      + update_time             = (known after apply)
+      + uri                     = (known after apply)
+      + urls                    = (known after apply)
+
+      + scaling (known after apply)
+
+      + template {
+          + execution_environment            = "EXECUTION_ENVIRONMENT_GEN2"
+          + labels                           = {
+              + "app"        = "moodle"
+              + "managed-by" = "terraform"
+            }
+          + max_instance_request_concurrency = 20
+          + service_account                  = "moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+          + timeout                          = "3600s"
+
+          + containers {
+              + build_info = (known after apply)
+              + image      = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a"
+
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+              + env {
+                  # At least one attribute in this block is (or was) sensitive,
+                  # so its contents will not be displayed.
+                }
+
+              + ports {
+                  + container_port = 8080
+                  + name           = (known after apply)
+                }
+
+              + resources {
+                  + cpu_idle          = true
+                  + limits            = {
+                      + "cpu"    = "1"
+                      + "memory" = "1Gi"
+                    }
+                  + startup_cpu_boost = true
+                }
+
+              + startup_probe {
+                  + failure_threshold     = 12
+                  + initial_delay_seconds = 0
+                  + period_seconds        = 5
+                  + timeout_seconds       = 1
+
+                  + tcp_socket {
+                      + port = 8080
+                    }
+                }
+
+              + volume_mounts {
+                  + mount_path = "/mnt/moodle"
+                  + name       = "data"
+                }
+              + volume_mounts {
+                  + mount_path = "/cloudsql"
+                  + name       = "cloudsql"
+                }
+            }
+
+          + scaling {
+              + max_instance_count = 1
+            }
+
+          + volumes {
+              + name = "data"
+
+              + nfs {
+                  + path   = "/moodle"
+                  + server = (known after apply)
+                }
+            }
+          + volumes {
+              + name = "cloudsql"
+
+              + cloud_sql_instance {
+                  + instances = [
+                      + "project-8e56ba89-c5a4-43c4-aa6:us-central1:moodle-sql-mysql",
+                    ]
+                }
+            }
+
+          + vpc_access {
+              + egress = "PRIVATE_RANGES_ONLY"
+
+              + network_interfaces {
+                  + network    = "moodle-sql-managed"
+                  + subnetwork = "moodle-sql-run"
+                }
+            }
+        }
+
+      + traffic (known after apply)
+    }
+
+  # module.cloudrun.google_cloud_scheduler_job.cron will be created
+  + resource "google_cloud_scheduler_job" "cron" {
+      + deletion_policy = "DELETE"
+      + id              = (known after apply)
+      + name            = "moodle-sql-cron"
+      + paused          = true
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+      + region          = "us-central1"
+      + schedule        = "*/15 * * * *"
+      + state           = (known after apply)
+      + time_zone       = "Etc/UTC"
+
+      + http_target {
+          + http_method = "POST"
+          + uri         = "https://run.googleapis.com/v2/projects/project-8e56ba89-c5a4-43c4-aa6/locations/us-central1/jobs/moodle-sql-cron:run"
+
+          + oauth_token {
+              + service_account_email = "moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+            }
+        }
+    }
+
+  # module.cloudrun.google_service_account.scheduler will be created
+  + resource "google_service_account" "scheduler" {
+      + account_id      = "moodle-sql-scheduler"
+      + deletion_policy = "DELETE"
+      + disabled        = false
+      + email           = "moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + id              = (known after apply)
+      + member          = "serviceAccount:moodle-sql-scheduler@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+      + name            = (known after apply)
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+      + unique_id       = (known after apply)
+    }
+
+  # module.database.google_sql_database.moodle will be created
+  + resource "google_sql_database" "moodle" {
+      + charset         = "utf8mb4"
+      + collation       = "utf8mb4_unicode_ci"
+      + deletion_policy = "DELETE"
+      + id              = (known after apply)
+      + instance        = "moodle-sql-mysql"
+      + name            = "moodle"
+      + project         = "project-8e56ba89-c5a4-43c4-aa6"
+      + self_link       = (known after apply)
+    }
+
+  # module.database.google_sql_database_instance.moodle will be updated in-place
+  ~ resource "google_sql_database_instance" "moodle" {
+        id                                   = "moodle-sql-mysql"
+        name                                 = "moodle-sql-mysql"
+        # (24 unchanged attributes hidden)
+
+      ~ settings {
+          ~ disk_autoresize                  = false -> true
+          ~ user_labels                      = {
+              + "app"        = "moodle"
+              + "managed-by" = "terraform"
+            }
+            # (22 unchanged attributes hidden)
+
+            # (5 unchanged blocks hidden)
+        }
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.database.google_sql_user.moodle will be updated in-place
+  ~ resource "google_sql_user" "moodle" {
+        id                      = "moodleuser/%/moodle-sql-mysql"
+        name                    = "moodleuser"
+      ~ password                = (sensitive value)
+        # (8 unchanged attributes hidden)
+    }
+
+  # module.networking.google_filestore_instance.moodle will be created
+  + resource "google_filestore_instance" "moodle" {
+      + create_time                 = (known after apply)
+      + deletion_policy             = "DELETE"
+      + deletion_protection_enabled = true
+      + desired_replica_state       = "READY"
+      + effective_labels            = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + effective_replication       = (known after apply)
+      + etag                        = (known after apply)
+      + id                          = (known after apply)
+      + labels                      = {
+          + "app"        = "moodle"
+          + "managed-by" = "terraform"
+        }
+      + location                    = "us-central1-a"
+      + name                        = "moodle-sql-files"
+      + project                     = "project-8e56ba89-c5a4-43c4-aa6"
+      + protocol                    = "NFS_V3"
+      + terraform_labels            = {
+          + "app"                        = "moodle"
+          + "goog-terraform-provisioned" = "true"
+          + "managed-by"                 = "terraform"
+        }
+      + tier                        = "BASIC_HDD"
+      + zone                        = (known after apply)
+
+      + file_shares {
+          + capacity_gb = 1024
+          + name        = "moodle"
+
+          + nfs_export_options {
+              + access_mode = "READ_WRITE"
+              + ip_ranges   = [
+                  + "10.20.0.0/24",
+                ]
+              + squash_mode = "NO_ROOT_SQUASH"
+            }
+        }
+
+      + networks {
+          + connect_mode      = "DIRECT_PEERING"
+          + ip_addresses      = (known after apply)
+          + modes             = [
+              + "MODE_IPV4",
+            ]
+          + network           = "moodle-sql-managed"
+          + reserved_ip_range = (known after apply)
+        }
+    }
+
+Plan: 45 to add, 5 to change, 2 to destroy.
+
+Changes to Outputs:
+  + builder_service_account    = "gh-builder@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+  + cloud_sql_instance         = "project-8e56ba89-c5a4-43c4-aa6:us-central1:moodle-sql-mysql"
+  + deployed_image             = "us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a"
+  + monitoring_dashboard       = (known after apply)
+  + terraform_service_account  = "gh-terraform@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com"
+  + workload_identity_provider = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: ../../../tfplan-bootstrap.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "../../../tfplan-bootstrap.tfplan"

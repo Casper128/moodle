@@ -1,0 +1,9 @@
+#21 pushing layers 98.5s done
+#21 pushing manifest for us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a@sha256:66d8f2c4eeaa118f2ca41fda7e50fc21704404d2c0fc87335fe96099f85ad305
+#21 pushing manifest for us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:ad14cb810a86849f62d8e410119aec1772d36d0a@sha256:66d8f2c4eeaa118f2ca41fda7e50fc21704404d2c0fc87335fe96099f85ad305 1.9s done
+#21 DONE 100.4s
+
+View build details: docker-desktop://dashboard/build/condescending_keldysh/condescending_keldysh0/qap59evm2w87fcc4ehdjfuhrb
+image_summary:
+  digest: sha256:66d8f2c4eeaa118f2ca41fda7e50fc21704404d2c0fc87335fe96099f85ad305
+  fully_qualified_digest: us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle@sha256:66d8f2c4eeaa118f2ca41fda7e50fc21704404d2c0fc87335fe96099f85ad305

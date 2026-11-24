@@ -104,7 +104,7 @@ resource "google_monitoring_alert_policy" "sql_cpu" {
 # Cuenta errores PHP escritos por Apache/PHP en stderr del contenedor.
 resource "google_logging_metric" "php_errors" {
   name   = "moodle_php_errors"
-  filter = "${local.run_filter} AND textPayload=~\"PHP (Fatal error|Warning|Parse error)\""
+  filter = "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"${var.project_name}-web\" AND textPayload=~\"PHP (Fatal error|Warning|Parse error)\""
   metric_descriptor {
     metric_kind = "DELTA"
     value_type  = "INT64"
