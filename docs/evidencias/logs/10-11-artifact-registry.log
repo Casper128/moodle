@@ -1,0 +1,57 @@
+== Trazabilidad commit → imagen (2026-11-24T05:51:11Z)
+$ gh api repos/Casper128/moodle/commits/actividad6
+c8aa208fe713f76b10774c35612690971fc20411  Merge PR #2: ServerName y apariencia institucional
+
+$ gcloud artifacts docker images list .../moodle --include-tags
+Listing items under project project-8e56ba89-c5a4-43c4-aa6, location us-central1, repository moodle-sql-containers.
+
+DIGEST: 1033c1ed2802
+TAGS: universidad-v1
+CREADA: 2026-11-05 20:29
+
+DIGEST: 133b98cdb1ed
+TAGS: 
+CREADA: 2026-11-24 05:01
+
+DIGEST: 21d8f55343eb
+TAGS: 
+CREADA: 2026-11-24 05:47
+
+DIGEST: 33a2e74728c7
+TAGS: 
+CREADA: 2026-11-05 20:29
+
+DIGEST: 66d8f2c4eeaa
+TAGS: ad14cb810a86849f62d8e410119aec1772d36d0a
+CREADA: 2026-11-24 05:01
+
+DIGEST: 839e26cac5ba
+TAGS: 
+CREADA: 2026-11-05 20:29
+
+DIGEST: 845cd9e73aea
+TAGS: 
+CREADA: 2026-11-05 20:29
+
+DIGEST: a6e84c4efdcc
+TAGS: 
+CREADA: 2026-11-24 05:47
+
+DIGEST: b9b277108814
+TAGS: 
+CREADA: 2026-11-05 20:29
+
+DIGEST: c0d0d2ea750c
+TAGS: universidad-b1
+CREADA: 2026-11-05 20:29
+
+DIGEST: d7498e684cd5
+TAGS: 
+CREADA: 2026-11-24 05:01
+
+DIGEST: d9534289c810
+TAGS: c8aa208fe713f76b10774c35612690971fc20411
+CREADA: 2026-11-24 05:47
+
+$ docker buildx imagetools inspect ...:c8aa208fe713f76b10774c35612690971fc20411 (etiqueta OCI revision)
+us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle@sha256:d9534289c810ec77dea91324ad0803f0e17047570c6a9ff6139ac1221a1661f4

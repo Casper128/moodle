@@ -1,0 +1,6 @@
+{
+  "name": "moodle-gcp-docs",
+  "private": true,
+  "description": "Capturas reales (Chrome headless) y generación del informe y la presentación",
+  "dependencies": { "puppeteer-core": "23.11.1", "docx": "9.5.1", "pptxgenjs": "3.12.0" }
+}

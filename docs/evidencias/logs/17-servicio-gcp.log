@@ -1,0 +1,40 @@
+$ gcloud run services describe moodle-sql-web
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '1'
+    spec:
+      containers:
+      - image: us-central1-docker.pkg.dev/project-8e56ba89-c5a4-43c4-aa6/moodle-sql-containers/moodle:c8aa208fe713f76b10774c35612690971fc20411
+        resources:
+          limits:
+            cpu: '1'
+            memory: 1Gi
+      serviceAccountName: moodle-sql-runtime@project-8e56ba89-c5a4-43c4-aa6.iam.gserviceaccount.com
+      volumes:
+      - name: data
+        nfs:
+          path: /moodle
+          server: 10.15.186.42
+status:
+  latestReadyRevisionName: moodle-sql-web-00003-psx
+  url: https://moodle-sql-web-ik7oibwhlq-uc.a.run.app
+$ gcloud run services describe (variables: solo nombres, secretos por referencia)
+  MOODLE_DB_NAME 
+  MOODLE_SITE_SHORTNAME 
+  MOODLE_WWWROOT 
+  MOODLE_DB_USER 
+  MOODLE_ADMIN_EMAIL 
+  MOODLE_SITE_NAME 
+  MOODLE_DB_PASSWORD -> Secret Manager moodle-sql-db-password
+  MOODLE_ADMIN_USER 
+  MOODLE_DB_SOCKET 
+$ gcloud filestore instances describe moodle-sql-files
+fileShares:
+- capacityGb: '1024'
+  name: moodle
+networks:
+- network: moodle-sql-managed
+state: READY
+tier: BASIC_HDD

@@ -3,34 +3,39 @@
 ## Componentes
 
 ```mermaid
-flowchart LR
-  dev[Desarrollador] -->|commit / PR| gh[(GitHub<br/>Casper128/moodle<br/>rama actividad6)]
-  gh --> appwf[application.yml<br/>build + push]
-  gh --> tfwf[terraform.yml<br/>fmt · validate · plan · apply]
-  appwf -->|OIDC / WIF<br/>gh-builder| ar[(Artifact Registry<br/>moodle-sql-containers<br/>moodle:COMMIT_SHA)]
-  appwf -->|PR deploy.auto.tfvars| gh
-  tfwf -->|OIDC / WIF<br/>gh-terraform| tfstate[(GCS<br/>estado Terraform<br/>versionado)]
-  tfwf -->|apply| gcp
+flowchart TB
+  dev([Desarrollador]) -->|commit / PR| gh[(GitHub · Casper128/moodle<br/>rama actividad6)]
+  user([Usuario]) -->|HTTPS| run
 
-  subgraph gcp[Google Cloud · us-central1]
-    run[Cloud Run<br/>moodle-sql-web<br/>máx. 1 instancia]
+  subgraph cicd[GitHub Actions · OIDC / Workload Identity Federation]
+    direction LR
+    appwf[application.yml<br/>build · push · PR de despliegue]
+    tfwf[terraform.yml<br/>fmt · validate · plan · aprobación · apply]
+  end
+  gh --> appwf
+  gh --> tfwf
+  appwf -->|gh-builder| ar[(Artifact Registry<br/>moodle:COMMIT_SHA)]
+  tfwf -->|gh-terraform| tfstate[(GCS · estado Terraform<br/>versionado)]
+
+  subgraph gcp[Google Cloud · us-central1 · gestionado por Terraform]
+    direction LR
+    run[Cloud Run · moodle-sql-web<br/>máx. 1 instancia]
     jobs[Cloud Run jobs<br/>install · cron]
-    sched[Cloud Scheduler<br/>cada 15 min] --> jobs
-    sql[(Cloud SQL MySQL 8.4<br/>moodle-sql-mysql<br/>db-f1-micro)]
+    sched[Cloud Scheduler<br/>cada 15 min]
+    sm[Secret Manager]
+    sql[(Cloud SQL MySQL 8.4<br/>db-f1-micro)]
     fs[(Filestore BASIC_HDD<br/>moodledata · NFS)]
-    sm[Secret Manager<br/>db · admin]
-    mon[Cloud Logging<br/>Cloud Monitoring<br/>uptime · alertas · dashboard]
+    mon[Logging · Monitoring<br/>uptime · alertas · dashboard]
+    sched --> jobs
     run -->|socket Cloud SQL| sql
     jobs --> sql
-    run -->|VPC directa<br/>moodle-sql-managed| fs
+    run -->|VPC directa| fs
     jobs --> fs
-    sm -.->|variables secretas| run
-    sm -.-> jobs
+    sm -.-> run
     run -.-> mon
-    sql -.-> mon
   end
   ar -->|imagen inmutable| run
-  user[Usuario] -->|HTTPS| run
+  tfwf -->|apply| run
 ```
 
 ## Decisiones

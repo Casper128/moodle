@@ -1,0 +1,57 @@
+$ gcloud logging read (solicitudes HTTP de Cloud Run, últimos 404 y 200)
+HORA: 06:10:44
+MET: GET
+ESTADO: 404
+LATENCIA: 0.014297626s
+RUTA: no-existe-120
+
+HORA: 06:10:43
+MET: GET
+ESTADO: 200
+LATENCIA: 0.119851424s
+RUTA: login
+
+HORA: 06:10:43
+MET: GET
+ESTADO: 200
+LATENCIA: 0.115673564s
+RUTA: login
+
+HORA: 06:10:42
+MET: GET
+ESTADO: 200
+LATENCIA: 0.121915634s
+RUTA: login
+
+HORA: 06:10:41
+MET: GET
+ESTADO: 404
+LATENCIA: 0.013631026s
+RUTA: no-existe-116
+
+HORA: 06:10:40
+MET: GET
+ESTADO: 200
+LATENCIA: 0.113863895s
+RUTA: login
+
+HORA: 06:10:39
+MET: GET
+ESTADO: 200
+LATENCIA: 0.112148119s
+RUTA: login
+
+HORA: 06:10:38
+MET: GET
+ESTADO: 200
+LATENCIA: 0.121795942s
+RUTA: login
+
+$ gcloud logging read (stdout/stderr del contenedor Apache/PHP)
+05:38:14	AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' dire
+05:37:58	AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' dire
+
+$ gcloud logging read (eventos del sistema: revisiones)
+06:03:18	/Services.UpdateService	
+06:03:17	/Services.UpdateService	moodle-sql-web-00003-psx
+05:38:00	/Services.UpdateService	

@@ -1,0 +1,27 @@
+== Cloud Monitoring API · 2026-11-24 05:02 → 06:12 UTC · alineación 10 min
+-- Solicitudes Cloud Run por clase de respuesta (suma)
+   response_code_class=2xx: 05:42=169.0 05:52=151.0 06:02=12.0 06:12=439.0
+   response_code_class=3xx: 05:42=5.0 05:52=5.0 06:02=0.0 06:12=12.0
+   response_code_class=4xx: 05:12=4.0 05:22=12.0 05:32=12.0 05:42=8.0 05:52=0.0 06:12=30.0
+-- Latencia p95 (ms)
+   total: 05:12=9.5 05:22=9.5 05:32=9.5 05:42=4356.599 05:52=420.705 06:02=491.063 06:12=1624.971
+-- CPU contenedor p95 (fracción)
+   total: 05:12=0.029 05:22=0.029 05:32=0.029 05:42=0.378 05:52=0.115 06:02=0.029 06:12=0.384
+-- Memoria contenedor p95 (fracción)
+   total: 05:12=0.019 05:22=0.019 05:32=0.019 05:42=0.138 05:52=0.149 06:02=0.149 06:12=0.14
+-- Instancias Cloud Run (máx)
+   state=active: 05:12=1.0 05:22=0.0 05:32=0.0 05:42=2.0 05:52=1.0 06:02=1.0 06:12=3.0
+   state=idle: 05:12=1.0 05:22=1.0 05:32=1.0 05:42=0.0 05:52=1.0 06:02=1.0 06:12=1.0
+-- Cloud SQL CPU (media)
+   total: 05:12=0.147 05:22=0.187 05:32=0.181 05:42=0.139 05:52=0.145 06:02=0.113 06:12=0.159
+-- Cloud SQL conexiones (media)
+   total: 05:12=5.8 05:22=7.1 05:32=6.5 05:42=6.0 05:52=6.1 06:02=5.8 06:12=6.5
+-- Uptime check superado (fracción por región)
+   checker_location=apac-singapore: 05:12=0.0 05:22=0.0 05:32=0.0 05:42=0.5 05:52=1.0 06:02=1.0 06:12=1.0
+   checker_location=eur-belgium: 05:12=0.0 05:22=0.0 05:32=0.0 05:42=0.5 05:52=1.0 06:02=1.0 06:12=1.0
+   checker_location=sa-brazil-sao_paulo: 05:12=0.0 05:22=0.0 05:32=0.0 05:42=0.5 05:52=1.0 06:02=1.0 06:12=1.0
+   checker_location=usa-iowa: 05:12=0.0 05:22=0.0 05:32=0.0 05:42=0.0 05:52=1.0 06:02=1.0 06:12=1.0
+   checker_location=usa-oregon: 05:12=0.0 05:22=0.0 05:32=0.0 05:42=0.0 05:52=1.0 06:02=1.0 06:12=1.0
+   checker_location=usa-virginia: 05:12=0.0 05:22=0.0 05:32=0.0 05:42=0.5 05:52=1.0 06:02=1.0 06:12=1.0
+-- Errores PHP (métrica de logs moodle_php_errors)
+   (sin datos en la ventana)
